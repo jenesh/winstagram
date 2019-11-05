@@ -3,7 +3,7 @@
 Fullstack web application with a team of 3 developers to create a positive web application.
 
 ### Group Roles
-Program Manager: [Sharrar Khan](https://github.com/SharrarKhan)
+Project Manager: [Sharrar Khan](https://github.com/SharrarKhan)
 
 UI/UX: [Owen Jones](https://github.com/ojones311)
 
