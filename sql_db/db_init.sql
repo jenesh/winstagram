@@ -1,0 +1,5 @@
+-- SQL QUERIES
+-- ===> TO DO <===
+-- CREATE DB => Name for now winstagram
+-- CREATE TABLES (6)
+-- INSERT MOCK DATA
