@@ -1,0 +1,24 @@
+{
+  "name": "winstagram",
+  "version": "1.0.0",
+  "description": "Fullstack web application with a team of 3 developers to create a positive web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenesh/winstagram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenesh/winstagram/issues"
+  },
+  "homepage": "https://github.com/jenesh/winstagram#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg-promise": "^9.3.3"
+  }
+}
