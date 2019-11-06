@@ -2,9 +2,10 @@
   "name": "winstagram",
   "version": "1.0.0",
   "description": "Fullstack web application with a team of 3 developers to create a positive web application.",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",

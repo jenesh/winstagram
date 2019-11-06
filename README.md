@@ -12,6 +12,39 @@ Tech Lead: [Jenesh Napit](https://github.com/jenesh)
 # Group Project Repo Link
 [Project Repo](https://github.com/joinpursuit/Pursuit-Core-Web-Express-Group-Project/blob/master/README.md)
 
+# To work on the project follow these steps
+
+[Git workflow repo](https://github.com/joinpursuit/Pursuit-Core-Web/blob/master/fundamentals/git_and_github/git_and_github_collaboration_workflow.md)
+
+- Create a local `git` repo 
+> \> mkdir *foldername*
+
+> \> cd *foldername*
+
+> \> git init
+
+- Connect your local repo to the **remote url**
+> \> git remote add origin https://github.com/**username**/**reponame**.git
+
+- Create a branch you want to work off of
+> \> git checkout -b *branchName*
+
+- To add your changes and push it to the repo
+> \> git add .
+
+> \> git commit -m *"Write a message here"*
+
+> \> git push -u origin *branchName*
+
+**If that doesn't work try this instead**
+
+> \> git push --set-upstream origin *branchName*
+
+- Lastly on github create a pull request and you're done
+
+- To get the latest version of the repository
+> \> git pull origin master
+
 ## Back-End
 
 Create a full RESTful API using the social media database structure described below, including an Express app and a Postgres database. This app should have the following routes, with corresponding SQL statements:
