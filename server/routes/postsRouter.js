@@ -17,7 +17,7 @@ USERS CONTAINS:
 
 POSTS CONTAINS:
 {
-    username: 
+    user_id: 
     body:
     url:
     timestamp
@@ -80,45 +80,66 @@ router.post('/', async (req, res) => {
     console.log("POST method for creating a new post started");
     console.log("req.body:", req.body);
     let insertQuery = `
-    INSERT INTO posts (username, body, url)
+    INSERT INTO posts (user_id, body, url)
     VALUES ($1, $2, $3)
     `;
     try { //if body and url exists
-        if(req.body.body & req.body.url) {
-            await db.none(insertQuery, [req.body.username, req.body.body, req.body.url]);
+        // if(req.body.body && req.body.url) {
+            const id = parseInt(req.body.user_id);
+            const body = req.body.body;
+            const url = req.body.url;
+
+            await db.any(insertQuery, [id, body, url]);
+
             res.json({
-                payload: [req.body.username, req.body.body, req.body.url],
+                payload: [req.body.user_id, req.body.body, ''],
                 message: "post created!"
             });
 
-          //if body exists and url doesn't  
-        } else if(req.body.body && !req.body.url) {
-            await db.none(insertQuery, [req.body.username, req.body.body, null]);
-            res.json({
-                payload: [req.body.username, req.body.body, null],
-                message: "post created!"
-            });
+        //   //if body exists and url doesn't  
+        // } else if(req.body.body && !req.body.url) {
+        //     await db.none(insertQuery, [req.body.user_id, req.body.body, ""]);
+        //     res.json({
+        //         payload: [req.body.user_id, req.body.body, ""],
+        //         message: "post created!"
+        //     });
 
-          //if body doesn't exist but the url does
-        } else if(!req.body.body && req.body.url) {
-            await db.none(insertQuery, [req.body.username, null, req.body.url]);
-            res.json({
-                payload: [req.body.username, null, req.body.url],
-                message: "post created!"
-            });
+        //   //if body doesn't exist but the url does
+        // } else if(!req.body.body && req.body.url) {
+        //     await db.none(insertQuery, [req.body.user_id, null, req.body.url]);
+        //     res.json({
+        //         payload: [req.body.user_id, null, req.body.url],
+        //         message: "post created!"
+        //     });
 
-          //if neiter exists  
-        } else { 
-            res.json({
-                message: "There was an error creating a post"
-            });
-        }
+        //   //if neiter exists  
+        // }
     } catch (error) {
+        console.log(error)
         res.json({
             message: "There was an error creating a post"
         });
    }
 
+}); 
+
+router.delete('/:id', async (req, res) => {
+    console.log("DELETE method for deleting a single post started"); 
+    try {
+        let posts = await db.any(`
+        DELETE FROM posts
+        WHERE id = $1`, [req.params.id]);
+        res.json({
+            payload: posts,
+            message: "Success. Retrieved all posts"
+        });
+    } catch (error) {
+        res.status(500);
+        res.json({  
+            message: "Error. Something went wrong!"
+        });
+        console.log("Error:", error);
+    }
 }); 
 
 module.exports = router;
