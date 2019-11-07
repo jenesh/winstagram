@@ -4,7 +4,7 @@ const config = {
     host: 'localhost',
     port: 5432, 
     database: 'winstagram',
-    user: 'owenjones'
+    user: 'jenesh'
 }
 
 module.exports = config;
