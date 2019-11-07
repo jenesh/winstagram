@@ -9,17 +9,27 @@ app.use(cors()); // Allows cors interaction
 app.use(express.urlencoded({extended: false})); // Required to parse into useable js
 app.use(express.json()); // Required for parsing JSON
 
-const usersRouter = require('./routes/usersRouter.js')
-
-app.use('/users', usersRouter)
-
-// Test route to check if server is working
-app.get('/:test', (req, res) => {
+// TEST Route
+app.get('/', (req, res) => {
     res.json({
         message: 'Server is up and running',
         params: req.params.test
     })
 });
+
+// USERS Route
+const usersRouter = require('./routes/usersRouter.js')
+app.use('/users', usersRouter)
+
+
+
+// ALBUMS Route
+const albumsRouter = require('./routes/albumsRouter');
+app.use('/albums', albumsRouter);
+
+// PICTURES Route
+const picturesRouter = require('./routes/picturesRouter');
+app.use('/pictures', picturesRouter);
 
 const port = 8000; 
 
