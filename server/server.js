@@ -9,6 +9,10 @@ app.use(cors()); // Allows cors interaction
 app.use(express.urlencoded({extended: false})); // Required to parse into useable js
 app.use(express.json()); // Required for parsing JSON
 
+//Routes:
+const postsRoutes = require("./routes/postsRouter");
+app.use("/posts", postsRoutes);
+
 // TEST Route
 app.get('/', (req, res) => {
     res.json({
