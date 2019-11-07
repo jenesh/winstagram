@@ -3,7 +3,7 @@
 Fullstack web application with a team of 3 developers to create a positive web application.
 
 ### Group Roles
-Program Manager: [Sharrar Khan](https://github.com/SharrarKhan)
+Project Manager: [Sharrar Khan](https://github.com/SharrarKhan)
 
 UI/UX: [Owen Jones](https://github.com/ojones311)
 
@@ -129,3 +129,7 @@ Have a table of contents page that contains hyperlinks to all of the other pages
 - See all photos 
 - Create a single photo
 - Delete a single photo
+
+
+> git remote add upstream https://github.com/jenesh/winstagram
+> git pull upstream master
