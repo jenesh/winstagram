@@ -2,9 +2,9 @@
 
 const config = {
     host: 'localhost',
-    port: 5433, 
+    port: 5432, 
     database: 'winstagram',
-    user: 'postgres'
+    user: 'owenjones'
 }
 
 module.exports = config;
