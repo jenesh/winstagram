@@ -4,11 +4,11 @@
 -- CREATE TABLES (6)
 -- INSERT MOCK DATA
 
-DROP DATABASE IF EXISTS winstragram;
+DROP DATABASE IF EXISTS winstagram;
 
-CREATE DATABASE winstragram;
+CREATE DATABASE winstagram;
 
-\c winstragram
+\c winstagram
 
 -- Users Table
 CREATE TABLE users (
