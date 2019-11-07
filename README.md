@@ -129,3 +129,7 @@ Have a table of contents page that contains hyperlinks to all of the other pages
 - See all photos 
 - Create a single photo
 - Delete a single photo
+
+
+> git remote add upstream https://github.com/jenesh/winstagram
+> git pull upstream master
