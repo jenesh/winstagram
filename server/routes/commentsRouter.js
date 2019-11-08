@@ -10,13 +10,10 @@ const cors = require('cors')
 const db = require('../pgPromise')
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//     res.send('Comments home')
-// })
 
 router.get('/posts/:post_id', async(req, res) => {
     const postId = parseInt(req.params.post_id)
-    const inputQuery = (`SELECT body FROM comments WHERE post_id = $1`)
+    const inputQuery = (`SELECT * FROM comments WHERE post_id = $1`)
 
     try{
         const getPosts = await db.any(inputQuery, [postId])
@@ -55,16 +52,32 @@ router.post('/posts/:post_id/:commenter_id', async(req, res) => {
     }
 })
 
-router.patch('/:post_id/:commenter_id', (req, res) => {
+router.patch('/posts/:post_id/:commenter_id', async (req, res) => {
     const postId = req.params.post_id
     const commenterId = req.params.commenter_id
-    const inputQuery = (``)
+    const comment = req.body
+    const inputQuery = (`UPDATE comments SET body= $1 WHERE post_id = $2 AND poster_id = $3`)
+
+    try{
+        await db.none(inputQuery, [comment.body, postId, commenterId])
+        res.json({
+            message:'Success. Comment updated.',
+            payload: req.body,
+            success: true
+        })
+    } catch (error){
+        res.json({
+            message: "Failed to update comment. Try again please",
+            success: false
+        })
+        console.log(error)
+    }
 })
 
 router.delete('/posts/:post_id/:commenter_id', async(req, res) => {
     const postId = req.params.post_id
     const commenterId = req.params.commenter_id
-    const inputQuery = (`DELETE FROM comments WHERE post_id = $1 AND commenter_id = $2`)
+    const inputQuery = (`DELETE FROM comments WHERE post_id = $1 AND poster_id = $2`)
 
     try{
         await db.none(inputQuery, [postId, commenterId])
@@ -77,6 +90,7 @@ router.delete('/posts/:post_id/:commenter_id', async(req, res) => {
             message: 'Could not delete comment. Try again later',
             success: false
         })
+        console.log(error)
     }
 })
 
