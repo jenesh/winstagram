@@ -25,8 +25,6 @@ app.get('/', (req, res) => {
 const usersRouter = require('./routes/usersRouter.js')
 app.use('/users', usersRouter)
 
-
-
 // ALBUMS Route
 const albumsRouter = require('./routes/albumsRouter');
 app.use('/albums', albumsRouter);
