@@ -12,15 +12,18 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const inputQuery = ('SELECT * FROM users')
-    const data = await db.any(inputQuery)
+    
     try{
+        const data = await db.any(inputQuery)
         res.json({
             message: 'Getting all /users',
-            payload: data
+            payload: data,
+            success: true
         })
     } catch (error){
         res.json({
-            message: 'Error not a valid input try another'
+            message: 'Error not a valid input try another',
+            success: false
         })
     }
 })
@@ -28,16 +31,19 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async(req, res) => {
     const id = parseInt(req.params.id)
-    const inputQuery = (`SELECT * FROM users WHERE id =${id}`)
-    const data = await db.one(inputQuery)
+    const inputQuery = (`SELECT * FROM users WHERE id = $1`)
+    
     try{
+        const data = await db.one(inputQuery, [id])
         res.json({
-            message: `Getting user ${id}`,
-            payload: data
+            message: `Getting user`,
+            payload: data,
+            success: true
         })
     } catch (error){
         res.json({
-            message: 'Error try another input'
+            message: 'Error try another input',
+            success: false
         })
     }
     
@@ -51,11 +57,13 @@ router.post('/', async (req, res) => {
         await db.none(inputQuery,[user.username, user.password, user.firstname, user.lastname])
         res.json({
             message: "Success user added to database",
-            payload: req.body
+            payload: req.body,
+            success: true
         })
     } catch(error){
         res.json({
-            message: "Could not add user. Something went wrong"
+            message: "Could not add user. Something went wrong",
+            success: false
         })
         console.log(error)
     }
@@ -63,16 +71,18 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const id = parseInt(req.params.id)
-    const inputQuery = (`DELETE FROM users WHERE id=${id}`);
+    const inputQuery = (`DELETE FROM users WHERE id=$1`);
     
     try{
-         await db.none(inputQuery)
+         await db.none(inputQuery, [id])
         res.json({
-            message: 'Success. User deleted.'
+            message: 'Success. User deleted.',
+            success: true
         })
     } catch(error){
         res.json({
-            message: 'Could not delete user. Try another userId'
+            message: 'Could not delete user. Try another userId',
+            success: false
         })
         console.log(error)
     }

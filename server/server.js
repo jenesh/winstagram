@@ -9,9 +9,11 @@ app.use(cors()); // Allows cors interaction
 app.use(express.urlencoded({extended: false})); // Required to parse into useable js
 app.use(express.json()); // Required for parsing JSON
 
-//Routes:
+//POST Route:
 const postsRoutes = require("./routes/postsRouter");
+
 app.use("/posts", postsRoutes);
+app.use
 
 // TEST Route
 app.get('/', (req, res) => {
@@ -24,6 +26,10 @@ app.get('/', (req, res) => {
 // USERS Route
 const usersRouter = require('./routes/usersRouter.js')
 app.use('/users', usersRouter)
+
+// COMMENTS Route
+const commentsRouter = require("./routes/commentsRouter")
+app.use('/comments', commentsRouter)
 
 // ALBUMS Route
 const albumsRouter = require('./routes/albumsRouter');
