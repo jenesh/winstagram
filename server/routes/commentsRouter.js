@@ -31,12 +31,12 @@ router.get('/posts/:post_id', async(req, res) => {
 })
 
 router.post('/posts/:post_id/:commenter_id', async(req, res) => {
-    const params = req.params
-    const comment = req.body
+    const {post_id, commenter_id} = req.params
+    const {user_id, body} = req.body
     const inputQuery = (`INSERT INTO comments (user_id, post_id, poster_id, body) VALUES($1, $2, $3, $4) `)
 
     try {
-        await db.none(inputQuery,[comment.user_id, params.post_id, params.commenter_id, comment.body])
+        await db.none(inputQuery,[user_id, post_id, commenter_id, body])
         res.json({
             message:'Success. Comment posted',
             payload: req.body,
@@ -53,13 +53,12 @@ router.post('/posts/:post_id/:commenter_id', async(req, res) => {
 })
 
 router.patch('/posts/:post_id/:commenter_id', async (req, res) => {
-    const postId = req.params.post_id
-    const commenterId = req.params.commenter_id
-    const comment = req.body
+    const {post_id, commenter_id}= req.params
+    const {body} = req.body
     const inputQuery = (`UPDATE comments SET body= $1 WHERE post_id = $2 AND poster_id = $3`)
-
+    
     try{
-        await db.none(inputQuery, [comment.body, postId, commenterId])
+        await db.none(inputQuery, [body, post_id, commenter_id])
         res.json({
             message:'Success. Comment updated.',
             payload: req.body,
