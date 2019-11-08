@@ -64,17 +64,15 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const id = parseInt(req.params.id)
     const inputQuery = (`DELETE FROM users WHERE id=${id}`);
-    const deleteUser = await db.one(inputQuery)
-
+    
     try{
-        
+         await db.none(inputQuery)
         res.json({
-            message: 'Success. User deleted.',
-            payload: deleteUser
+            message: 'Success. User deleted.'
         })
     } catch(error){
         res.json({
-            message: 'Could not delete user. Try anoher userId'
+            message: 'Could not delete user. Try another userId'
         })
         console.log(error)
     }
