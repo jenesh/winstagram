@@ -8,9 +8,12 @@ app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json()); 
 
+//POST Route:
 
 const postsRoutes = require("./routes/postsRouter");
+
 app.use("/posts", postsRoutes);
+app.use
 
 
 const likesRouter = require("./routes/likesRouter");
@@ -28,6 +31,11 @@ app.get('/', (req, res) => {
 const usersRouter = require('./routes/usersRouter.js')
 app.use('/users', usersRouter)
 
+// COMMENTS Route
+const commentsRouter = require("./routes/commentsRouter")
+app.use('/comments', commentsRouter)
+
+// ALBUMS Route
 const albumsRouter = require('./routes/albumsRouter');
 app.use('/albums', albumsRouter);
 
