@@ -1,0 +1,30 @@
+#root {
+    height: 100vh;
+    padding-top: 45px;
+
+}
+
+#main {
+    position: relative;
+    top: 400px;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+#myVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#video {
+    width: 100vw;
+}
+
+video {
+    height: 100%;
+}
