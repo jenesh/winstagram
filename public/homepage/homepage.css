@@ -1,0 +1,32 @@
+#profileDiv {
+    height: 100vh;
+}
+.user {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+.one {
+    background-image: url('http://placehold.it/400x200');
+}
+
+#profilePic {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+}
+
+#quoteDiv {
+    display: baseline;
+    vertical-align: middle;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 20%;
+}

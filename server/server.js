@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.redirect('/landingpage');
 });
 
-// HOMEPAGE Route
+// LANDINGPAGE Route
 app.get('/landingpage', (req, res) => {
     const landingPage = path.dirname(__dirname) + '/public/landingPage/landingPage.html';
     res.sendFile(landingPage);
