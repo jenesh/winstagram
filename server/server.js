@@ -14,13 +14,13 @@ app.use(express.static(`${path.dirname(__dirname)}/public`));
 app.get('/', (req, res) => {
     console.log(path.dirname(__dirname));
     res.redirect('/landingpage');
-})
+});
 
 // HOMEPAGE Route
 app.get('/landingpage', (req, res) => {
     const landingPage = path.dirname(__dirname) + '/public/landingPage/landingPage.html';
     res.sendFile(landingPage);
-})
+});
 
 // HOMEPAGE Route
 app.get('/login', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/signup', (req, res) => {
 });
 
 // USERS Route
-const usersRouter = require('./routes/usersRouter.js')
+const usersRouter = require('./routes/usersRouter.js');
 app.use('/users', usersRouter);
 
 //POST Route:
@@ -46,8 +46,8 @@ const likesRouter = require("./routes/likesRouter");
 app.use("/likes", likesRouter);
 
 // COMMENTS Route
-const commentsRouter = require("./routes/commentsRouter")
-app.use('/comments', commentsRouter)
+const commentsRouter = require("./routes/commentsRouter");
+app.use('/comments', commentsRouter);
 
 // ALBUMS Route
 const albumsRouter = require('./routes/albumsRouter');
