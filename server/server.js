@@ -45,7 +45,7 @@ app.get('/validation', (req, res) => {
     }
 });
 
-app.get('/homepage', (req, res) => {
+app.get('/homepage', async (req, res) => {
     // console.log('SESSION', req.session);
     const { username, id } = req.session.valid;
     if (req.session.valid.loggedIn) {
@@ -65,14 +65,13 @@ app.get('/homepage', (req, res) => {
             console.log(error)
         }
         // GET ALL PHOTOS
-       let pictures;
+        let pictures;
 
         try{
             pictures = db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
         } catch (error){
             console.log(error)
         }
-         
 
         let posts, query2;
         // const posts = db.any() // GET ALL POSTS
@@ -94,7 +93,7 @@ app.get('/homepage', (req, res) => {
 
         const arr = [1, 2, 3, 4, 5]
 
-        res.render(viewPath, {username, id, arr, posts, comments});
+        res.render(viewPath, {username, id, arr, posts, comments, likes, pictures});
     } else {
         res.redirect('/login');
     }
