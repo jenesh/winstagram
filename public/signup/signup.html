@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,5 +23,61 @@
             <input type='submit'>
         </form>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signup Pg</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="signup.css">
+
+    <script src='signup.js'></script>
+</head>
+<body>
+    <form id='form' action='' onsubmit='return false'>
+        <div id='header'>
+            <h1 class="center-align">Winstagram</h1>
+            <h4 class="center-align">Spread postitivity today</h4>
+            
+            <div class="section">
+                <div class="row">
+                        <div class="input-field col offset-s4 s4">
+                            <input id="username" type="text" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col offset-s4 s4">
+                            <input id="password" type="password" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col offset-s4 s4">
+                            <input id="first-name" type="text" class="validate" required>
+                            <label for="first-name">First Name</label>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col offset-s4 s4">
+                            <input id="last-name" type="text" class="validate" required>
+                            <label for="last-name">Last Name</label>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row center-align">
+                <button id="submitButton" class="btn waves-effect waves-light center-align" type="submit" name="action">Sign Up</button>
+            </div> 
+    </form>
 </body>
 </html>

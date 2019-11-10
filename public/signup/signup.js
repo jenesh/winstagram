@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const signupForm = document.querySelector('#form-signup')
+    const signupForm = document.querySelector('#form')
     signupForm.addEventListener('submit', submitSignupForm)
 
 })
@@ -36,9 +36,6 @@ const accountCreationHandler = async (username, password, firstname, lastname) =
         console.log('all good homie')
         const postInputValues = await axios.post(`http://localhost:8000/users`,{username, password, firstname, lastname})
         console.log(postInputValues)
-    } else if(user === undefined || checkForValidInputs() === false){
-        console.log('Remember to fill out all fields')
-        window.alert('Remember to fill out all fields')
     } else {
         console.log('Username already taken. Please choose another')
         window.alert('Username already taken. Please choose another')
