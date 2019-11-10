@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors()); 
 app.use(express.urlencoded({extended: false}));
-app.use(express.json()); 
+app.use(express.json());
 
 //POST Route:
 
@@ -21,10 +21,11 @@ app.use("/likes", likesRouter);
 
 
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Server is up and running',
-        params: req.params.test
-    })
+    res.sendFile('/Users/sharrarkhan/Desktop/pursuitWork/core/firstGroupProject/winstagram/public/landingpage/landingpage.html')
+    // res.json({
+    //     message: 'Server is up and running',
+    //     params: req.params.test
+    // })
 });
 
 
