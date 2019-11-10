@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
             message: 'Error not a valid input try another',
             success: false
         })
+        console.log("error:", error);
     }
 })
 
@@ -95,7 +96,7 @@ router.delete('/:id', async (req, res) => {
     const inputQuery = (`DELETE FROM users WHERE id=$1`);
     
     try{
-         await db.none(inputQuery, [id])
+        await db.none(inputQuery, [id])
         res.json({
             message: 'Success. User deleted.',
             success: true
@@ -107,6 +108,29 @@ router.delete('/:id', async (req, res) => {
         })
         console.log(error)
     }
+})
+
+//u and p as two variables, get u and p from query, then make query call, select * from users if u = $1 and p = $2
+//db.one
+router.get('/login/inputs/:username/:password', async(req, res) => {
+    const username = req.params.username;
+    const password = req.params.password;
+    const inputQuery = (`SELECT * FROM users WHERE username = $1 AND password = $2`);
+    
+    try{
+        const data = await db.one(inputQuery, [username, password])
+        res.json({
+            message: `Getting user named: ${username}`,
+            payload: data,
+            success: true
+        })
+    } catch (error){
+        res.json({
+            message: 'Error try another input',
+            success: false
+        })
+    }
+    
 })
 
 module.exports = router;
