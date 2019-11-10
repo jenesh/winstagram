@@ -1,35 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     console.log("DOM content loaded");
     const usernameInput = document.querySelector("#usernameInput");
     const passwordInput = document.querySelector("#passwordInput");
     const submitButton = document.querySelector("#submitButton");
     const form = document.querySelector("#form");
 
-    form.addEventListener("submit", () => {
-        getUser();
+    form.addEventListener("submit", async () => {
+        await getUser();
     });
+});
 
- });
-
- const getUser = async () => {
-     //network req to server
-     //server needs endpoint
-    //check user username equal usrnameInput
-
-    //u and p values in network request
-    //post req check if user in db
-
-    // then get all posts with get
-
-
+const getUser = async () => {
     const usernameInput = document.querySelector("#usernameInput").value;
     const passwordInput = document.querySelector("#passwordInput").value;
 
-    if(usernameInput != null && passwordInput != null) {
-        const response = await axios.get(`http://localhost:3000/users/login/inputs/${usernameInput}/${passwordInput}`);
+    if (usernameInput != null && passwordInput != null) {
+        const response = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
         console.log("response:", response);
-        const data = response.data;
-        console.log("data:", data);
+
+        if (data.success) {
+            const username = data.payload.username;
+            const id = data.payload.id;
+            await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
+            window.location = `/homepage`;
+        } else {
+            console.log('Try again');
+        }
     }
- }
+}
 
