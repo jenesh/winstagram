@@ -59,20 +59,52 @@ CREATE TABLE pictures (
 INSERT INTO users (username, password, firstname, lastname) VALUES
     ('red', '123','owen', 'jones'),
     ('green', '123','sharrar', 'khan'),
-    ('blue', '123','jenesh', 'napit')
+    ('blue', '123','jenesh', 'napit'),
+    ('lol', '123','mr', 'lol'),
+    ('lml', '123','lml', 'funny'),
+    ('yo', '123','y', 'o'),
+    ('yay', '123','mr', 'yay'),
+    ('name1', '123','name', '1'),
+    ('name2', '123','name', '2'),
+    ('name3', '123','name', '3'),
+    ('name4', '123','name', '4'),
+    ('name5', '123','name', '5'),
+    ('name6', '123','name', '6'),
+    ('name7', '123','name', '7'),
+    ('name8', '123','name', '8');
 ;
 
 INSERT INTO posts (user_id, body, url) VALUES
     (1, 'Red is my favorite color', ''),
     (2, 'Green is my favorite color', ''),
-    (3, 'Blue is my favorite color', '')
+    (3, 'Blue is my favorite color', ''),
+    (4, 'body4', ''),
+    (5, 'body5', ''),
+    (6, 'body6', ''),
+    (7, 'body7', ''),
+    (8, 'body8', '');
 ;
 
 INSERT INTO likes (user_id, post_id, poster_id) VALUES
     (1, 2, 2),
     (2, 3, 3),
-    (3, 2, 2)
-;
+    (3, 2, 2),
+
+    (3, 2, 2),
+    (2, 3, 3),
+    (1, 2, 2),
+
+    (1, 2, 2),
+    (1, 3, 3),
+    (1, 2, 2),
+
+    (2, 2, 2),
+    (2, 3, 3),
+    (2, 2, 2),
+
+    (3, 2, 2),
+    (3, 3, 3),
+    (3, 2, 2);
 
 INSERT INTO comments (user_id, post_id, poster_id, body) VALUES
     (1, 2, 2, 'That\s my favorite color too!'),
