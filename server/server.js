@@ -52,6 +52,28 @@ app.get('/homepage', (req, res) => {
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
 
         // // GET ALL USER INFORMATION
+
+        // const query1 = db.any() // GET ALL POSTS
+        // const query2 = db.any() // GET ALL COMMENTS
+
+        // GET ALL LIKES
+        let likes;
+
+        try{
+            likes = db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
+        } catch (error){
+            console.log(error)
+        }
+        // GET ALL PHOTOS
+       let pictures;
+
+        try{
+            pictures = db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
+        } catch (error){
+            console.log(error)
+        }
+         
+
         let posts, query2;
         // const posts = db.any() // GET ALL POSTS
         try{
@@ -69,6 +91,7 @@ app.get('/homepage', (req, res) => {
         }
         // const query3 = db.any() // GET ALL LIKES
         // const query4 = db.any() // GET ALL PHOTOS
+
         const arr = [1, 2, 3, 4, 5]
 
         res.render(viewPath, {username, id, arr, posts, comments});
