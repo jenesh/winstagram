@@ -15,11 +15,11 @@ const getUser = async () => {
     const passwordInput = document.querySelector("#passwordInput").value;
 
     if (usernameInput != null && passwordInput != null) {
-        const response = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
-        console.log("response:", response);
+        const data = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
+        console.log("response:", data);
 
         if (data.success) {
-            const username = data.payload.username;
+            const username = data.data.payload.username;
             const id = data.payload.id;
             await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
             window.location = `/homepage`;
