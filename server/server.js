@@ -51,9 +51,14 @@ app.get('/homepage', (req, res) => {
     if (req.session.valid.loggedIn) {
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
 
-        // GET ALL USER INFORMATION
-        
-        res.render(viewPath, {username, id});
+        // // GET ALL USER INFORMATION
+        // const query1 = db.any() // GET ALL POSTS
+        // const query2 = db.any() // GET ALL COMMENTS
+        // const query3 = db.any() // GET ALL LIKES
+        // const query4 = db.any() // GET ALL PHOTOS
+        const arr = [1, 2, 3, 4, 5]
+
+        res.render(viewPath, {username, id, arr});
     } else {
         res.redirect('/login');
     }
