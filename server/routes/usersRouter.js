@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:username', async(req, res) => {
+router.get('/username/:username', async(req, res) => {
     const username = req.params.username
     const inputQuery = (`SELECT * FROM users WHERE username = $1`)
     
@@ -50,8 +50,8 @@ router.get('/:username', async(req, res) => {
     
 })
 
-router.get('/:id', async(req, res) => {
-    const id = req.params.id
+router.get('/id/:id', async(req, res) => {
+    const id = Number(req.params.id)
     const inputQuery = (`SELECT * FROM users WHERE id = $1`)
     
     try{
@@ -66,8 +66,9 @@ router.get('/:id', async(req, res) => {
             message: 'Error try another input',
             success: false
         })
-        console.log(error)
+        console.log('error:',error)
     }
+    console.log(typeof id)
     
 })
 
