@@ -17,8 +17,14 @@
     <script src="/homepage/homepage.js"></script>
 </head>
 <body>
+    <% include partials/nav.ejs %>
     <%= username %>
     <%= id %>
+
+    <% arr.forEach(ele => { %>
+        <h1> <%= ele %> </h1>
+    <% }) %>
+
     <div id="profileDiv" class="container">
         <div id="profilePic" class="user one center-align"></div>
         <div id="quoteDiv" class="center-align">
