@@ -54,8 +54,24 @@ app.get('/homepage', (req, res) => {
         // // GET ALL USER INFORMATION
         // const query1 = db.any() // GET ALL POSTS
         // const query2 = db.any() // GET ALL COMMENTS
-        // const query3 = db.any() // GET ALL LIKES
-        // const query4 = db.any() // GET ALL PHOTOS
+
+        // GET ALL LIKES
+        let likes;
+
+        try{
+            likes = db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
+        } catch (error){
+            console.log(error)
+        }
+        // GET ALL PHOTOS
+       let pictures;
+
+        try{
+            pictures = db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
+        } catch (error){
+            console.log(error)
+        }
+         
         const arr = [1, 2, 3, 4, 5]
 
         res.render(viewPath, {username, id, arr});
