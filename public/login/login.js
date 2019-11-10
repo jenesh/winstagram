@@ -26,10 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const passwordInput = document.querySelector("#passwordInput").value;
 
     if(usernameInput != null && passwordInput != null) {
-        const response = await axios.get(`http://localhost:3000/users/login/inputs/${usernameInput}/${passwordInput}`);
-        console.log("response:", response);
-        const data = response.data;
-        console.log("data:", data);
+        const response = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
+        
+        let data = response.data.payload;
+        if(data.length === 0) {
+            console.log("Error. Username doesn't exist");
+        } else {
+            console.log(data);
+        }
+    } else {
+        console.log("Error")
     }
  }
 

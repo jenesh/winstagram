@@ -29,3 +29,13 @@
     width: 50%;
     height: 20%;
 }
+
+#textCard {
+    display: baseline;
+    vertical-align: middle;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 20%;
+}
