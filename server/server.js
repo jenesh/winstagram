@@ -55,14 +55,14 @@ app.get('/homepage', (req, res) => {
         let posts, query2;
         // const posts = db.any() // GET ALL POSTS
         try{
-            const posts = await db.any(`SELECT * FROM posts WHERE user_id = $1`, [id]);
+            posts = await db.any(`SELECT * FROM posts WHERE user_id = $1`, [id]);
         } catch (error){
             query1 = error;
             console.log("error:", error);
         }
         // const comments = db.any() // GET ALL COMMENTS
         try{
-            const comments = await db.any(`SELECT * FROM comments WHERE user_id = $1`, [id]);
+            comments = await db.any(`SELECT * FROM comments WHERE user_id = $1`, [id]);
         } catch (error){
             comments = error;
             console.log("error:", error);
