@@ -1,6 +1,7 @@
 // Users
 
 // GET /users - Get all users.
+// GET /users/:username - Get user by username
 // GET /users/:id - Get single user.
 // POST /users - Add single user.
 // DELETE /users/:id - Delete user with the corresponding id.
@@ -28,9 +29,28 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:username', async(req, res) => {
+    const username = req.params.username
+    const inputQuery = (`SELECT * FROM users WHERE username = $1`)
+    
+    try{
+        const data = await db.one(inputQuery, [username])
+        res.json({
+            message: `Getting user`,
+            payload: data,
+            success: true
+        })
+    } catch (error){
+        res.json({
+            message: 'Error try another input',
+            success: false
+        })
+    }
+    
+})
 
 router.get('/:id', async(req, res) => {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
     const inputQuery = (`SELECT * FROM users WHERE id = $1`)
     
     try{
@@ -45,6 +65,7 @@ router.get('/:id', async(req, res) => {
             message: 'Error try another input',
             success: false
         })
+        console.log(error)
     }
     
 })
