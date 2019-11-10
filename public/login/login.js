@@ -15,7 +15,7 @@ const getUser = async () => {
     const passwordInput = document.querySelector("#passwordInput").value;
 
     if (usernameInput != null && passwordInput != null) {
-        const response = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
+        const data = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
         console.log("response:", response);
 
         if (data.success) {
