@@ -7,12 +7,8 @@ const app = express();
 
 app.use(cors()); 
 app.use(express.urlencoded({extended: false}));
-<<<<<<< HEAD
-app.use(express.json());
-=======
 app.use(express.json()); 
 app.use(express.static(`${path.dirname(__dirname)}/public`));
->>>>>>> 320c1139a26d5ad25ffcade1650670bd8cbbbbb8
 
 // Redirect to homepage
 app.get('/', (req, res) => {
@@ -20,7 +16,7 @@ app.get('/', (req, res) => {
     res.redirect('/landingpage');
 })
 
-// HOMEPAGE Route
+// LANDINGPAGE Route
 app.get('/landingpage', (req, res) => {
     const landingPage = path.dirname(__dirname) + '/public/landingPage/landingPage.html';
     res.sendFile(landingPage);
@@ -49,22 +45,6 @@ app.use("/posts", postsRoutes);
 const likesRouter = require("./routes/likesRouter");
 app.use("/likes", likesRouter);
 
-<<<<<<< HEAD
-
-app.get('/', (req, res) => {
-    res.sendFile('/Users/sharrarkhan/Desktop/pursuitWork/core/firstGroupProject/winstagram/public/landingpage/landingpage.html')
-    // res.json({
-    //     message: 'Server is up and running',
-    //     params: req.params.test
-    // })
-});
-
-
-const usersRouter = require('./routes/usersRouter.js')
-app.use('/users', usersRouter)
-
-=======
->>>>>>> 320c1139a26d5ad25ffcade1650670bd8cbbbbb8
 // COMMENTS Route
 const commentsRouter = require("./routes/commentsRouter")
 app.use('/comments', commentsRouter)
