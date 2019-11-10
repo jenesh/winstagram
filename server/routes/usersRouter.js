@@ -116,10 +116,11 @@ router.delete('/:id', async (req, res) => {
 router.get('/login/inputs/:username/:password', async(req, res) => {
     const username = req.params.username;
     const password = req.params.password;
+    console.log("password", password)
     const inputQuery = (`SELECT * FROM users WHERE username = $1 AND password = $2`);
     
     try{
-        const data = await db.one(inputQuery, [username, password])
+        const data = await db.any(inputQuery, [username, password])
         res.json({
             message: `Getting user named: ${username}`,
             payload: data,
