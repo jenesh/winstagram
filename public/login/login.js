@@ -11,5 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
         // if(usernameInput.value.length || passwordInput.value.length) {
             
         // }
-    })
+    });
 });

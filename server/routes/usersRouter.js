@@ -74,7 +74,7 @@ router.delete('/:id', async (req, res) => {
     const inputQuery = (`DELETE FROM users WHERE id=$1`);
     
     try{
-         await db.none(inputQuery, [id])
+        await db.none(inputQuery, [id])
         res.json({
             message: 'Success. User deleted.',
             success: true
