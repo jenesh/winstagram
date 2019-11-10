@@ -18,9 +18,10 @@ const getUser = async () => {
         const data = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
         console.log("response:", data);
 
-        if (data.success) {
+        if (data.data.success) {
             const username = data.data.payload.username;
-            const id = data.payload.id;
+            const id = data.data.payload.id;
+            console.log(username, id)
             await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
             window.location = `/homepage`;
         } else {
