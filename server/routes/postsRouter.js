@@ -3,7 +3,7 @@ const cors = require('cors');
 const db = require('../pgPromise');
 const router = express.Router();
 
-const app = express(); 
+const app = express();
 
 app.use(cors());
 app.use(express.urlencoded({extended: false})); 
