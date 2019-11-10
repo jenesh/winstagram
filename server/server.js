@@ -45,16 +45,13 @@ app.get('/validation', (req, res) => {
     }
 });
 
-app.get('/homepage', (req, res) => {
+app.get('/homepage', async (req, res) => {
     // console.log('SESSION', req.session);
     const { username, id } = req.session.valid;
     if (req.session.valid.loggedIn) {
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
 
         // // GET ALL USER INFORMATION
-
-        // const query1 = db.any() // GET ALL POSTS
-        // const query2 = db.any() // GET ALL COMMENTS
 
         // GET ALL LIKES
         let likes;
@@ -89,8 +86,6 @@ app.get('/homepage', (req, res) => {
             comments = error;
             console.log("error:", error);
         }
-        // const query3 = db.any() // GET ALL LIKES
-        // const query4 = db.any() // GET ALL PHOTOS
 
         const arr = [1, 2, 3, 4, 5]
 
