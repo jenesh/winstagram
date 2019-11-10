@@ -15,6 +15,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.set('view engine', 'ejs');
 
 // Redirect to LANDINGPAGE
 app.get('/', (req, res) => {
@@ -30,32 +31,33 @@ app.get('/landingpage', (req, res) => {
 
 // HOMEPAGE Route
 app.get('/validation', (req, res) => {
-    const { username } = req.body;
+    const { username, id } = req.query;
+    // console.log('Params', req.query);
     req.session.valid = {
         loggedIn: true,
-        username: username
+        username: username,
+        id: id
     };
-    if (req.session.valid) {
-        const homePage = path.dirname(__dirname) + '/public/homepage/homepage.html';
-        res.sendFile(homePage);
+    if (req.session.valid && username.length > 0 && id.length > 0) {
+        res.redirect('/homepage');
     } else {
         res.redirect('/login');
     }
 });
 
 app.get('/homepage', (req, res) => {
+    // console.log('SESSION', req.session);
+    const { username, id } = req.session.valid;
     if (req.session.valid.loggedIn) {
-        res.json({
-            payload: {
-                username: req.session.valid.username,
-                posts: [1, 2, 3]
-            },
-            message: 'User data'
-        });
+        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+
+        // GET ALL USER INFORMATION
+        
+        res.render(viewPath, {username, id});
     } else {
         res.redirect('/login');
     }
-})
+});
 
 // LOGIN Route
 app.get('/login', (req, res) => {
