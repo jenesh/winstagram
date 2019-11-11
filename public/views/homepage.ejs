@@ -26,8 +26,42 @@
         </div>
     </div>
 
-    <% include partials/cards.ejs %>
 
+<!-- SIMPLE TEXT POST -->
+<div id="textPostDiv" class="container center-align">
+        <div class="row center-align">
+                <div id="textCard" class="cardBorder col s12 m5 center-align">
+                    <div class="card-panel green center-align">
+                        <div style="text-decoration: underline; height: 1%; font-size: 130%;">
+                            <p class="left-align" styles="text-align: left;"><%= username %></p>
+                        </div>
+                    <span class="white-text center-align">I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                    </span>
+                    </div>
+                </div>
+        </div>
+</div>
+
+    <!-- Picture POST -->
+<div class="container center-align">
+        <div class="row center-align">
+                <div id="textCard" class="cardBorder col s12 m5 center-align">
+                    <div class="card-panel green center-align">
+                        <div style="text-decoration: underline; height: 1%; font-size: 130%;">
+                            <p class="left-align" styles="text-align: left"><%= username %></p>
+                        </div>
+                    <span class="white-text center-align">
+                        <img class="images"src="http://www.outdoor-photos.com/_photo/3831414.jpg" alt="">
+                    </span>
+                    </div>
+                </div>
+        </div>
+</div>
+
+        <div class="aComment boxed" style="border-style: solid;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam adipisci corporis voluptas error inventore, sint non dolores, repudiandae nisi sunt facere. Quis sint consectetur nihil! Perspiciatis blanditiis recusandae repellat nesciunt?</p>
+        </div>
     <%= posts %>
     <%= likes %>
     <%= comments %>
