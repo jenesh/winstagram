@@ -6,7 +6,7 @@ $(document).ready(() => {
     $('#login').click(async () => {
         console.log('login');
         // Send user to login page
-        window.location.href = `http://localhost:8000/login`
+        window.location.href = `http://localhost:8000/login`;
     });
 
     // Signin Page

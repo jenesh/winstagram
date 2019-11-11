@@ -15,13 +15,20 @@
     <title>Home</title>
     <link rel="stylesheet" href="/homepage/homepage.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/homepage/homepage.js"></script>
+    
 </head>
 
 <body>
     <div class="container">
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+
+        <button id="logOut">Log Out</button>
+
         <% allInfo.forEach(ele => { %>
+        <% if (ele.id === user.id) {
+            
+        } else {        
+        %>
         <div class='card' data-postId="<%= ele.id_post %>">
             <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
                 <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
@@ -36,9 +43,10 @@
                 <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
             </span>
         </div>
-        <% }) %>
+        <% }}) %>
 
     </div>
+    <script src="/homepage/homepage.js"></script>
 </body>
 
 </html>

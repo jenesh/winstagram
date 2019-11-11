@@ -64,25 +64,18 @@ INSERT INTO users (username, password, firstname, lastname) VALUES
     ('lol', '123','mr', 'lol'),
     ('lml', '123','lml', 'funny'),
     ('yo', '123','y', 'o'),
-    ('yay', '123','mr', 'yay'),
-    ('name1', '123','name', '1'),
-    ('name2', '123','name', '2'),
-    ('name3', '123','name', '3'),
-    ('name4', '123','name', '4'),
-    ('name5', '123','name', '5'),
-    ('name6', '123','name', '6'),
-    ('name7', '123','name', '7'),
-    ('name8', '123','name', '8');
+    ('yay', '123','mr', 'yay')
+;
 
 INSERT INTO posts (user_id_post, body_post, url) VALUES
     (1, 'Red is my favorite color', ''),
     (2, 'Green is my favorite color', ''),
     (3, 'Blue is my favorite color', ''),
-    (1, 'body4', 'image1'),
-    (2, 'body5', ''),
-    (1, 'body6', ''),
-    (3, 'body7', ''),
-    (3, 'body8', 'image2');
+    (1, 'I believe I can fly', 'image1'),
+    (2, 'Is the world flat or round?', ''),
+    (1, 'Queens is the best dont @ me', ''),
+    (3, 'Why is it so cold all of a sudden?', ''),
+    (3, 'Whenever I feel sad I just watch a knicks game to remind myself it could be worse.', 'image2');
 
 INSERT INTO likes (user_id_like, post_id_like, poster_id_like) VALUES
     (1, 2, 2),
@@ -103,16 +96,15 @@ INSERT INTO likes (user_id_like, post_id_like, poster_id_like) VALUES
     (4, 2, 7),
     (2, 6, 3),
     (1, 2, 4),
-    (5, 2, 3),
-    (8, 1, 3),
-    (6, 5, 9)
+    (5, 2, 3)
 ;
 INSERT INTO comments (user_id_comment, post_id_comment, poster_id_comment, body_comment) VALUES
-    (1, 2, 2, 'Thats my favorite color too!'),
-    (1, 1, 2, 'Thats my favorite color too!'),
-    (2, 2, 2, 'Omg, Twinz!'),
-    (2, 1, 1, 'First!'),
-    (1, 3, 3, 'First!')
+    (1, 2, 2, 'Green is so ugly'),
+    (1, 3, 3, 'Blue is legit the best'),
+    (2, 2, 2, 'Catch me outside how bout that'),
+    (2, 1, 1, '2019 Anyone!?'),
+    (4, 1, 1, 'Cows go moo, ducks go quack, idiots go 2019 Anyone!?'),
+    (5, 3, 3, 'Youre legit wrong kid')
 ;
 
 INSERT INTO albums (user_id_album) VALUES 
