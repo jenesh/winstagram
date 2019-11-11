@@ -17,9 +17,15 @@
     <script src="/homepage/homepage.js"></script>
 </head>
 <body>
+    <% include partials/cards.ejs %>
 
-    <% posts.forEach(ele => { %>
-        
+    <%= posts %>
+    <%= likes %>
+    <%= comments %>
+    <%= pictures %>
+
+    <% arr.forEach(ele => { %>
+        <h1> <%= ele %> </h1>
     <% }) %>
 </body>
 </html>
