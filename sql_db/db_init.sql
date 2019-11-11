@@ -50,6 +50,7 @@ CREATE TABLE albums (
 
 CREATE TABLE pictures (
     id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users (id) ON DELETE CASCADE,
     album_id INT REFERENCES albums (id) ON DELETE CASCADE,
     url TEXT,
     time TEXT DEFAULT NOW()
