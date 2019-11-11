@@ -83,7 +83,6 @@ INSERT INTO posts (user_id, body, url) VALUES
     (6, 'body6', ''),
     (7, 'body7', ''),
     (8, 'body8', '')
-
 ;
 
 INSERT INTO likes (user_id, post_id, poster_id) VALUES
@@ -108,11 +107,11 @@ INSERT INTO likes (user_id, post_id, poster_id) VALUES
     (9, 6, 4)
 ;
 
+
 INSERT INTO comments (user_id, post_id, poster_id, body) VALUES
     (1, 2, 2, 'That\s my favorite color too!'),
     (2, 2, 2, 'Omg, Twinz!'),
     (2, 1, 1, 'First!'),
-    ()
 ;
 
 INSERT INTO albums (user_id) VALUES 

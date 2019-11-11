@@ -1,5 +1,5 @@
 #profileDiv {
-    height: 100vh;
+    height: auto;
 }
 .user {
     width: 150px;
@@ -20,22 +20,24 @@
     margin-top: 7%;
 }
 
+#profileName {
+    font-size: 200%;
+}
+
 #quoteDiv {
-    display: baseline;
-    vertical-align: middle;
-    margin-top: 4%;
+    display: block;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 70%;
     height: 20%;
 }
 
 #textCard {
-    display: baseline;
-    vertical-align: middle;
-    margin-top: 4%;
-    margin-left: auto;
+    display: block;
+    margin-top: 10%;
     margin-right: auto;
+    margin-left: 25%;
     width: 50%;
     height: 20%;
 }
