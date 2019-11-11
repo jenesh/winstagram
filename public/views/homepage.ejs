@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,16 +17,28 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/homepage/homepage.js"></script>
 </head>
+
 <body>
-    <% include partials/cards.ejs %>
+    <div class="container">
+        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+        <% allInfo.forEach(ele => { %>
+        <div class='card' data-postId="<%= ele.id_post %>">
+            <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
+            <p><%= ele.body_post %></p>
+            <span class='time'>
+                <%
+                    const arr = ele.time.split(' ')
+                    const date = arr[0].split('-')
+                    const oldDate = new Date(ele.time)
+                    const today = new Date()
+                %>
+                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+            </span>
+        </div>
+        <% }) %>
 
-    <%= posts %>
-    <%= likes %>
-    <%= comments %>
-    <%= pictures %>
-
-    <% arr.forEach(ele => { %>
-        <h1> <%= ele %> </h1>
-    <% }) %>
+    </div>
 </body>
+
 </html>
