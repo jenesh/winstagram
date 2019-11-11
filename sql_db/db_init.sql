@@ -24,7 +24,7 @@ CREATE TABLE posts (
     user_id_post INT REFERENCES users (id) ON DELETE CASCADE,
     body_post TEXT,
     url TEXT,
-    time TEXT DEFAULT NOW()
+    time_post TEXT DEFAULT NOW()
 );
 
 CREATE TABLE likes (
@@ -40,20 +40,21 @@ CREATE TABLE comments (
     post_id_comment INT REFERENCES posts (id_post) ON DELETE CASCADE,
     poster_id_comment INT REFERENCES users (id) ON DELETE CASCADE,
     body_comment TEXT,
-    time TEXT DEFAULT NOW()
+    time_comment TEXT DEFAULT NOW()
 );
 
 CREATE TABLE albums (
-    id SERIAL PRIMARY KEY,
+    id_album SERIAL PRIMARY KEY,
     user_id_album INT REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE pictures (
-    id SERIAL PRIMARY KEY,
+    id_picture SERIAL PRIMARY KEY,
     user_id_picture INT REFERENCES users (id) ON DELETE CASCADE,
-    album_id_picture INT REFERENCES albums (id) ON DELETE CASCADE,
+    album_id_picture INT REFERENCES albums (id_album) ON DELETE CASCADE,
+    post_id_picture INT REFERENCES posts (id_post) ON DELETE CASCADE,
     url_picture TEXT,
-    time TEXT DEFAULT NOW()
+    time_picture TEXT DEFAULT NOW()
 );
 
 -- DUMMY DATA
@@ -113,10 +114,10 @@ INSERT INTO albums (user_id_album) VALUES
     (1)
 ;
 
-INSERT INTO pictures (user_id_picture, album_id_picture, url_picture) VALUES
-    (1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
-    (1, 2, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
-    (2, 3, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg')
+INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
+    (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
+    (1, 2, 1, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
+    (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg')
 ;
 
 -- Display both the tables
