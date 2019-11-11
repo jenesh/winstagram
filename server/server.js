@@ -95,7 +95,7 @@ app.get('/homepage', async (req, res) => {
             comments = error;
             console.log('Comments error => ', error);
         }
-      
+    
         const arr = [1, 2, 3, 4, 5];
         console.log('All Info: ', allInfo);
         // console.log(users, likes, pictures, posts, comments);
