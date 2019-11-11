@@ -47,7 +47,7 @@ app.get('/validation', (req, res) => {
 
 app.get('/homepage', async (req, res) => {
     // req.session.cookie.expires = false;
-    console.log('SESSION', req.session);
+    // console.log('SESSION', req.session);
     try {
         if (!req.session.hasOwnProperty('valid')) {
             console.log('TRUE')
@@ -64,9 +64,11 @@ app.get('/homepage', async (req, res) => {
 
     if (req.session.valid.loggedIn) {
         // // GET ALL USER INFORMATION
-        let user, likes, pictures, posts, comments, allInfo;
+        let user, likes, pictures, posts, comments = [];
+
+        // GET ALL POSTS FOR ALL USERS
         try{
-            allInfo = await db.any(`SELECT * FROM posts LEFT JOIN users ON (users.id = posts.user_id_post)`);
+            posts = await db.any('SELECT * FROM posts LEFT JOIN users ON (users.id = posts.user_id_post) WHERE users.id <> $1', [id]);
             // JOIN comments ON (users.id = comments.user_id)
             // JOIN likes ON (users.id = likes.user_id)
 
@@ -83,17 +85,80 @@ app.get('/homepage', async (req, res) => {
 
         // GET ALL COMMENTS FOR EACH POST
         try{
-            comments = await db.any(`SELECT * FROM posts LEFT JOIN comments (posts.id_post = comments.post_id_comment)`);
+            comments = await db.any('SELECT * FROM posts LEFT JOIN comments ON (posts.id_post = comments.post_id_comment) WHERE posts.id_post <> $1', [id]);
         } catch (error){
             // console.log('Comments error => ', error);
         }
 
+        // GET ALL LIKES FOR EACH POST
+        try{
+            likes = await db.any('SELECT * FROM posts LEFT JOIN likes ON (posts.id_post = likes.post_id_like) WHERE posts.id_post <> $1', [id]);
+            console.log('Working')
+        } catch (error){
+            // console.log('Comments error => ', error);
+        }
+
+        // GET ALL PHOTOS FOR EACH POST
+        try{
+            pictures = await db.any('SELECT * FROM posts LEFT JOIN pictures ON (posts.id_post = pictures.post_id_picture) WHERE posts.id_post <> $1', [id]);
+            console.log('Working')
+        } catch (error){
+            // console.log('Comments error => ', error);
+        }
+
+        // Building required JSON data
+        for (let i = 0; i < comments.length; i++) {
+            for (let j = 0; j < posts.length; j++) {
+                if (comments[i].post_id_comment === posts[j].id_post) {
+                    if (posts[j].allComments) {
+                        posts[j].allComments.push(comments[i]);
+                    } else {
+                        posts[j].allComments = [];
+                        posts[j].allComments.push(comments[i]);
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < likes.length; i++) {
+            for (let j = 0; j < posts.length; j++) {
+                if (likes[i].post_id_like === posts[j].id_post) {
+                    if (posts[j].allLikes) {
+                        posts[j].allLikes.push(likes[i]);
+                    } else {
+                        posts[j].allLikes = [];
+                        posts[j].allLikes.push(likes[i]);
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < pictures.length; i++) {
+            for (let j = 0; j < posts.length; j++) {
+                if (pictures[i].post_id_picture === posts[j].id_post) {
+                    if (posts[j].allPhotos) {
+                        posts[j].allPhotos.push(pictures[i]);
+                    } else {
+                        posts[j].allPhotos = [];
+                        posts[j].allPhotos.push(pictures[i]);
+                    }
+                }
+            }
+        }
+
+        const data = {
+            user: user,
+            posts: posts,
+            // comments: comments
+        }
+
         // console.log('All Info: ', allInfo);
         // console.log('Current User Info: ', user);
-        // console.log('All Comments for each post: ', comments);
+        console.log('All Comments for each post: ', comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
-        res.render(viewPath, {allInfo, user});
+        res.json(data);
+        // res.render(viewPath, {allInfo, user});
     } else {
         res.redirect('/login');
     }
