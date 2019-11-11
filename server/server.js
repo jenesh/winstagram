@@ -52,7 +52,23 @@ app.get('/homepage', async (req, res) => {
 
     if (req.session.valid.loggedIn) {
         // // GET ALL USER INFORMATION
-        let likes, pictures, posts, comments;
+        let users, likes, pictures, posts, comments, allInfo;
+        try{
+            allInfo = await db.any(`
+            SELECT * FROM users
+            JOIN posts ON (users.id = posts.user_id)
+            JOIN comments ON (users.id = comments.user_id)
+            `, [id])  
+        } catch (error){
+            console.log('Likes error => ', error);
+        }
+
+        // GET ALL USERS
+        try{
+            users = await db.any('SELECT * FROM users WHERE id = $1', [id])  
+        } catch (error){
+            console.log('Users error => ', error);
+        }
         // GET ALL LIKES
         try{
             likes = await db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
@@ -81,12 +97,12 @@ app.get('/homepage', async (req, res) => {
         }
       
         const arr = [1, 2, 3, 4, 5];
-
-        console.log(likes, pictures, posts, comments);
+        console.log('All Info: ', allInfo);
+        // console.log(users, likes, pictures, posts, comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
 
-        res.render(viewPath, {username, id, arr, posts, comments, likes, pictures});
+        res.render(viewPath, {username, id, users, posts, comments, likes, pictures});
     } else {
         res.redirect('/login');
     }
