@@ -47,48 +47,62 @@ app.get('/validation', (req, res) => {
 
 app.get('/homepage', async (req, res) => {
     // console.log('SESSION', req.session);
-    const { username, id } = req.session.valid;
-    if (req.session.valid.loggedIn) {
-        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+    let { username, id } = req.session.valid;
+    id = Number(id);
 
+    if (req.session.valid.loggedIn) {
         // // GET ALL USER INFORMATION
+        let users, likes, pictures, posts, comments, allInfo;
+        try{
+            allInfo = await db.any(`
+            SELECT * FROM users
+            JOIN posts ON (users.id = posts.user_id)
+            JOIN comments ON (users.id = comments.user_id)
+            `, [id])  
+        } catch (error){
+            console.log('Likes error => ', error);
+        }
+
+        // GET ALL USERS
+        try{
+            users = await db.any('SELECT * FROM users WHERE id = $1', [id])  
+        } catch (error){
+            console.log('Users error => ', error);
+        }
 
         // GET ALL LIKES
-        let likes;
-
         try{
-            likes = db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
+            likes = await db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
         } catch (error){
-            console.log(error)
+            console.log('Likes error => ', error);
         }
         // GET ALL PHOTOS
-        let pictures;
-
         try{
-            pictures = db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
+            pictures = await db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
         } catch (error){
-            console.log(error)
+            console.log('Photos error => ', error);
         }
-
-        let posts, query2;
-        // const posts = db.any() // GET ALL POSTS
+        // GET ALL POSTS
         try{
             posts = await db.any(`SELECT * FROM posts WHERE user_id = $1`, [id]);
         } catch (error){
             query1 = error;
-            console.log("error:", error);
+            console.log('Posts error => ', error);
         }
-        // const comments = db.any() // GET ALL COMMENTS
+        // GET ALL COMMENTS
         try{
             comments = await db.any(`SELECT * FROM comments WHERE user_id = $1`, [id]);
         } catch (error){
             comments = error;
-            console.log("error:", error);
+            console.log('Comments error => ', error);
         }
+    
+        const arr = [1, 2, 3, 4, 5];
+        console.log('All Info: ', allInfo);
+        // console.log(users, likes, pictures, posts, comments);
 
-        const arr = [1, 2, 3, 4, 5]
-
-        res.render(viewPath, {username, id, arr, posts, comments, likes, pictures});
+        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+        res.render(viewPath, {username, id, users, posts, comments, likes, pictures});
     } else {
         res.redirect('/login');
     }
