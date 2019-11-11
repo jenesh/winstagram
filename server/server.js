@@ -47,52 +47,45 @@ app.get('/validation', (req, res) => {
 
 app.get('/homepage', async (req, res) => {
     // console.log('SESSION', req.session);
-    const { username, id } = req.session.valid;
+    let { username, id } = req.session.valid;
+    id = Number(id);
+
     if (req.session.valid.loggedIn) {
-        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
-
         // // GET ALL USER INFORMATION
-
-        // const query1 = db.any() // GET ALL POSTS
-        // const query2 = db.any() // GET ALL COMMENTS
-
+        let likes, pictures, posts, comments;
         // GET ALL LIKES
-        let likes;
-
         try{
             likes = await db.any('SELECT * FROM likes WHERE user_id = $1', [id])  
         } catch (error){
-            console.log(error)
+            console.log('Likes error => ', error);
         }
         // GET ALL PHOTOS
-        let pictures;
-
         try{
             pictures = await db.any('SELECT * FROM pictures WHERE user_id = $1', [id])
         } catch (error){
-            console.log(error)
+            console.log('Photos error => ', error);
         }
-
-        let posts, comments;
-        // const posts = db.any() // GET ALL POSTS
+        // GET ALL POSTS
         try{
             posts = await db.any(`SELECT * FROM posts WHERE user_id = $1`, [id]);
         } catch (error){
             query1 = error;
-            console.log("error:", error);
+            console.log('Posts error => ', error);
         }
-        // const comments = db.any() // GET ALL COMMENTS
+        // GET ALL COMMENTS
         try{
             comments = await db.any(`SELECT * FROM comments WHERE user_id = $1`, [id]);
         } catch (error){
             comments = error;
-            console.log("error:", error);
+            console.log('Comments error => ', error);
         }
-        // const query3 = db.any() // GET ALL LIKES
-        // const query4 = db.any() // GET ALL PHOTOS
+      
+        const arr = [1, 2, 3, 4, 5];
 
-        const arr = [1, 2, 3, 4, 5]
-        console.log(posts, comments, likes, pictures);
+        console.log(likes, pictures, posts, comments);
+
+        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+
         res.render(viewPath, {username, id, arr, posts, comments, likes, pictures});
     } else {
         res.redirect('/login');
