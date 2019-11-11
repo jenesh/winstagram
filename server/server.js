@@ -79,12 +79,13 @@ app.get('/homepage', async (req, res) => {
             comments = error;
             console.log('Comments error => ', error);
         }
-
+      
         const arr = [1, 2, 3, 4, 5];
 
         console.log(likes, pictures, posts, comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+
         res.render(viewPath, {username, id, arr, posts, comments, likes, pictures});
     } else {
         res.redirect('/login');

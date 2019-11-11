@@ -72,7 +72,7 @@ INSERT INTO users (username, password, firstname, lastname) VALUES
     ('name5', '123','name', '5'),
     ('name6', '123','name', '6'),
     ('name7', '123','name', '7'),
-    ('name8', '123','name', '8')
+    ('name8', '123','name', '8');
 ;
 
 INSERT INTO posts (user_id, body, url) VALUES
@@ -83,13 +83,29 @@ INSERT INTO posts (user_id, body, url) VALUES
     (5, 'body5', ''),
     (6, 'body6', ''),
     (7, 'body7', ''),
-    (8, 'body8', '')
+    (8, 'body8', '');
 
 ;
 
 INSERT INTO likes (user_id, post_id, poster_id) VALUES
     (1, 2, 2),
     (2, 3, 3),
+    (3, 2, 2),
+
+    (3, 2, 2),
+    (2, 3, 3),
+    (1, 2, 2),
+
+    (1, 2, 2),
+    (1, 3, 3),
+    (1, 2, 2),
+
+    (2, 2, 2),
+    (2, 3, 3),
+    (2, 2, 2),
+
+    (3, 2, 2),
+    (3, 3, 3),
     (3, 2, 2),
 
     (4, 2, 7),
@@ -108,6 +124,7 @@ INSERT INTO likes (user_id, post_id, poster_id) VALUES
     (12, 11, 10),
     (9, 6, 4)
 ;
+
 
 INSERT INTO comments (user_id, post_id, poster_id, body) VALUES
     (1, 2, 2, 'That\s my favorite color too!'),
