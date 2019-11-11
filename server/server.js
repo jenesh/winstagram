@@ -69,6 +69,7 @@ app.get('/homepage', async (req, res) => {
         } catch (error){
             console.log('Users error => ', error);
         }
+
         // GET ALL LIKES
         try{
             likes = await db.any('SELECT * FROM likes WHERE user_id = $1', [id])  

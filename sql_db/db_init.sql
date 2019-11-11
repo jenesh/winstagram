@@ -127,6 +127,7 @@ INSERT INTO comments (user_id, post_id, poster_id, body) VALUES
     (2, 1, 1, 'First!')
     (2, 1, 1, 'First!')
     (2, 1, 1, 'First!')
+
 ;
 
 INSERT INTO albums (user_id) VALUES 
