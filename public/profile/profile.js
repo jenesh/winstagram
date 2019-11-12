@@ -11,4 +11,5 @@ $('#homepageBtn').click( async => {
 
 $('#photoBtn').click( async => {
     window.location.href = `http://localhost:8000/photo`;
-})
+});
+
