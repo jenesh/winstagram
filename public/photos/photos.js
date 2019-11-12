@@ -23,3 +23,4 @@ $('#logOut').click( async () => {
         window.location.href = `http://localhost:8000/login`;
     }
 });
+
