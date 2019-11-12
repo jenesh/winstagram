@@ -23,7 +23,7 @@ const getUser = async () => {
             const id = data.data.payload.id;
             console.log(username, id)
             await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
-            window.location = `./homepage`;
+            window.location = `/homepage`;
         } else {
             console.log('Try again');
         }
