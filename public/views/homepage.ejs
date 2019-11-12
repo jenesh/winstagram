@@ -17,10 +17,22 @@
     
 </head>
 <body>
+<<<<<<< HEAD
 
     <!-- <div class="container">
+=======
+    <div class="container">
+        <div id="profileBtn" class="btn valign-wrapper">
+            <i class="material-icons">account_box</i>
+            <span class="">Profile Page</span>
+        </div>
+        <div id="logOut" class="btn">
+                <i class="material-icons">lock</i>
+                <span>Log Out</span>
+        </div>
+>>>>>>> d07dde572af4631b8cc62114cb41f1b2e8a7b76b
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
-        <button id="logOut">Log Out</button>
+        
 
         <% data.posts.forEach(ele => { %>
         <% if (ele.id === user.id) {

@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
     try {
         let posts = await db.any(`
         SELECT * FROM posts
-        WHERE id = $1`, [req.params.id]);
+        WHERE id_post = $1`, [req.params.id]);
         res.json({
             payload: posts,
             message: "Success. Retrieved all posts",
@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
     console.log("POST method for creating a new post started");
     console.log("req.body:", req.body);
     let insertQuery = `
-    INSERT INTO posts (user_id, body, url)
+    INSERT INTO posts (user_id_post, body_post, url)
     VALUES ($1, $2, $3)
     `;
     try { //if body and url exists
@@ -113,7 +113,7 @@ router.delete("/:id", async (req, res) => {
     console.log("postID:", postId);
     const inputQuery = `
     DELETE FROM posts
-    WHERE id = $1
+    WHERE id_post = $1
     `;
     try {
         await db.none(inputQuery, [postId]);
@@ -138,8 +138,8 @@ router.patch("/:id", async (req, res) => {
     const {id} = req.params;
     const {body} = req.body;
     const inputQuery = `
-    UPDATE posts SET body = $1
-    WHERE id = $2
+    UPDATE posts SET body_post = $1
+    WHERE id_post = $2
     `;
     console.log("req.body:", req.body)
     try {

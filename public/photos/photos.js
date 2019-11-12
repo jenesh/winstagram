@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const fetchPhotoAlbums = async (userId) => {
     const photoAlbum = await axios.get(`http://localhost:8000/albums/${userId}`)
-    const 
-    console.log(photoAlbum.data.message)
+    const photos = photoAlbum.data.message
+    console.log(photos)
 }
 
 fetchPhotoAlbums(1)

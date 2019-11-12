@@ -36,7 +36,7 @@ router.get("/posts/:id", async (req, res) => {
     try {
         let likes = await db.any(`
         SELECT * FROM likes
-        WHERE id = $1
+        WHERE user_id_like = $1
         `, [req.params.id]);
         res.json({
             payload: likes,
@@ -61,8 +61,8 @@ router.post("/posts/:id", async (req, res) => {
     
     const postId = parseInt(req.params.id);
     let insertQuery = `
-    INSERT INTO likes (user_id, post_id, poster_id)
-    VALUES ($1, ${postId}, $3)
+    INSERT INTO likes (user_id_like, post_id_like, poster_id_like)
+    VALUES ($1, $2, $3)
     `;
     try {
         const user_id = parseInt(req.body.user_id);
@@ -91,7 +91,7 @@ router.delete("/:id", async (req, res) => {
     const id = req.params.id;
     const inputQuery = `
     DELETE FROM likes
-    WHERE id = $1
+    WHERE user_id_like = $1
     `;
     try {
         await db.none(inputQuery, [id]);
