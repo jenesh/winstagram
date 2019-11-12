@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +16,9 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
 </head>
-
 <body>
     <div class="container">
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
-
         <button id="logOut">Log Out</button>
 
         <% data.posts.forEach(ele => { %>
@@ -44,9 +41,7 @@
             </span>
         </div>
         <% }}) %>
-
     </div>
     <script src="/homepage/homepage.js"></script>
 </body>
-
 </html>
