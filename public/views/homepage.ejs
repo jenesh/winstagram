@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,14 +17,26 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/homepage/homepage.js"></script>
 </head>
+
 <body>
-    <% include partials/nav.ejs %>
-    <div id="profileDiv" class="container">
-        <div id="profilePic" class="user one center-align"></div>
-        <p id="profileName" class="center-align"><%= username %></p>
-        <div id="quoteDiv" class="center-align">
-            <p id="pTag" class="center-align">"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde nam corrupti ipsum facere atque eos officiis corporis, labore ipsa consequuntur optio quasi id facilis velit eaque consectetur voluptates provident inventore!"</p> 
+    <div class="container">
+        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+        <% allInfo.forEach(ele => { %>
+        <div class='card' data-postId="<%= ele.id_post %>">
+            <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
+            <p><%= ele.body_post %></p>
+            <span class='time'>
+                <%
+                    const arr = ele.time.split(' ')
+                    const date = arr[0].split('-')
+                    const oldDate = new Date(ele.time)
+                    const today = new Date()
+                %>
+                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+            </span>
         </div>
+<<<<<<< HEAD
     </div>
 
 
@@ -70,5 +83,11 @@
     <% arr.forEach(ele => { %>
         <h1> <%= ele %> </h1>
     <% }) %>
+=======
+        <% }) %>
+
+    </div>
+>>>>>>> 91a758963771f8eebfaa2fa001901ad720cbe261
 </body>
+
 </html>
