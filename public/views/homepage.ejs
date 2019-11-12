@@ -17,6 +17,11 @@
     
 </head>
 <body>
+
+    <!-- <div class="container">
+        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+        <button id="logOut">Log Out</button>
+
     <div class="container">
         <div id="profileBtn" class="btn valign-wrapper">
             <i class="material-icons">account_box</i>
@@ -27,14 +32,17 @@
                 <span>Log Out</span>
         </div>
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
-        
 
         <% data.posts.forEach(ele => { %>
         <% if (ele.id === user.id) {
             
         } else {        
         %>
+
+        <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
+
         <div class='card blue' data-postId="<%= ele.id_post %>">
+
             <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
                 <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
             <p><%= ele.body_post %></p>
@@ -49,7 +57,51 @@
             </span>
         </div>
         <% }}) %>
+    </div> -->
+
+
+        <div class="container">
+        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+        <button id="logOut">Log Out</button>
+
+        <% data.posts.forEach(ele => { %>
+        <% if (ele.id === user.id) {
+            
+        } else if(ele.url) { %>
+                <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
+                        <p class="center-align"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                            <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
+                        <p><%= ele.body_post %></p>
+                        <img class="cardImages" src= <%= ele.url %>
+                        <span class='time'>
+                            <%
+                                const arr = ele.time_post.split(' ')
+                                const date = arr[0].split('-')
+                                const oldDate = new Date(ele.time_post)
+                                const today = new Date()
+                            %>
+                            <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                        </span>
+                    </div>
+        <%} else {        %>
+        <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
+            <p class="center-align"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
+            <p><%= ele.body_post %></p>
+            <span class='time'>
+                <%
+                    const arr = ele.time_post.split(' ')
+                    const date = arr[0].split('-')
+                    const oldDate = new Date(ele.time_post)
+                    const today = new Date()
+                %>
+                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+            </span>
+        </div>
+        <% }}) %>
     </div>
+    
     <script src="/homepage/homepage.js"></script>
+    
 </body>
 </html>
