@@ -64,7 +64,7 @@ INSERT INTO users (username, password, firstname, lastname) VALUES
     ('blue', '123','jenesh', 'napit'),
     ('lol', '123','mr', 'lol'),
     ('lml', '123','lml', 'funny'),
-    ('yo', '123','y', 'o')
+    ('yo', '123','y', 'o'),
     ('yay', '123','mr', 'yay')
 ;
 
