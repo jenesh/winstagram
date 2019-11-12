@@ -152,13 +152,13 @@ app.get('/homepage', async (req, res) => {
             // comments: comments
         }
 
-        // console.log('All Info: ', allInfo);
+        // console.log('All Info: ', data);
         // console.log('Current User Info: ', user);
         console.log('All Comments for each post: ', comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
-        res.json(data);
-        // res.render(viewPath, {allInfo, user});
+        // res.json(data);
+        res.render(viewPath, {data, user});
     } else {
         res.redirect('/login');
     }
