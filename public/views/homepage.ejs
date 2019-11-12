@@ -16,7 +16,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
 </head>
-<body>
+<body class="black">
 
     <div class="container">
         
@@ -35,43 +35,68 @@
                 <span>Log Out</span>
         </div>
 
-        <h1 class="center-align">Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+        <h1 class="center-align indigo-text darken-3">Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
 
         <% data.posts.forEach(ele => { %>
-        <% if (ele.id === user.id) {
-            
-        } else if(ele.url) { %>
-            <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
-                <p class="center-align"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                    <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
-                <p><%= ele.body_post %></p>
-                <img class="cardImages responsive-img" src= <%= ele.url %> />
-                <span class='time'>
-                    <%
-                        const arr = ele.time_post.split(' ')
-                        const date = arr[0].split('-')
-                        const oldDate = new Date(ele.time_post)
-                        const today = new Date()
-                    %>
-                    <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-                </span>
-            </div>
-        <%} else {        %>
-            <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
-                <p class="center-align"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                    <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
-                <p><%= ele.body_post %></p>
-                <span class='time'>
-                    <%
-                        const arr = ele.time_post.split(' ')
-                        const date = arr[0].split('-')
-                        const oldDate = new Date(ele.time_post)
-                        const today = new Date()
-                    %>
-                    <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-                </span>
-            </div>
-        <% }}) %>
+            <% if (ele.id === user.id) {
+                
+            } else if(ele.url) { %>
+                <div class='card grey lighten-5 z-depth-1 hoverable' styles="" data-postId="<%= ele.id_post %>">
+                    <div class="valign-wrapper">
+                        <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
+                        <span class="right"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                        <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                    </div>
+                    <p class="flow-text center-align"><%= ele.body_post %></p>
+                    <img class="cardImages responsive-img" src= <%= ele.url %> />
+                    <span class='time'>
+                        <%
+                            const arr = ele.time_post.split(' ')
+                            const date = arr[0].split('-')
+                            const oldDate = new Date(ele.time_post)
+                            const today = new Date()
+                        %>
+                        <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                    </span>
+                </div>
+            <% } else if (ele.url_photo) {  %>
+                <div class='card grey lighten-5 z-depth-1 hoverable' styles="" data-postId="<%= ele.id_post %>">
+                    <div class="valign-wrapper">
+                        <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
+                        <span class="right"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
+                            <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                    </div>
+                    
+                    <p class="flow-text center-align"><%= ele.body_post %></p>
+                    <span class='time'>
+                        <%
+                            const arr = ele.time_post.split(' ')
+                            const date = arr[0].split('-')
+                            const oldDate = new Date(ele.time_post)
+                            const today = new Date()
+                        %>
+                        <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                    </span>
+                </div>
+            <% } else if (!ele.url && !ele.url_photo) { %>
+                
+                <div class="card grey lighten-5 z-depth-1 hoverable">
+                    <div class="row valign-wrapper">
+                        <div class="profile-img col s2">
+                            <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img">
+                        </div>
+                        <div class="">
+                            <span class="middle"> <%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                            <br>
+                            <span class="black-text left">
+                                <%= ele.body_post %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            <% } %>
+        <% }) %>
     </div>
     
     <script src="/homepage/homepage.js"></script>
