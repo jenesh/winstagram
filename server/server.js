@@ -275,7 +275,7 @@ app.get('/profile', async (req, res) => {
         // console.log('Current User Info: ', user);
         console.log('All Comments for each post: ', comments);
 
-        const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
+        const viewPath = path.dirname(__dirname) + '/public/views/profile.ejs';
         // res.json(data);
         res.render(viewPath, {data, user});
     } else {
