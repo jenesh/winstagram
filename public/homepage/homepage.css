@@ -40,25 +40,33 @@
     margin-left: 25%;
     width: 50%;
     height: 20%;
+    border-radius: 10%;
+
 }
 
-<<<<<<< HEAD
+.border-radius {
+    border-radius: 20px;
+}
+
+.card {
+    padding: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #53B8EE;
+}
+
 .images {
     height: 100%;
     width: 100%;
 }
 
-.cardBorder {
-    background-color: forestgreen;
+.cardImages {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.aComment {
-    width: 50%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-=======
-.card {
-    padding: 10px;
->>>>>>> 91a758963771f8eebfaa2fa001901ad720cbe261
+.time {
+    font-size: 80%;
 }

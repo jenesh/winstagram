@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get('/posts/:post_id', async(req, res) => {
     const postId = parseInt(req.params.post_id)
-    const inputQuery = (`SELECT * FROM comments WHERE post_id = $1`)
+    const inputQuery = (`SELECT * FROM comments WHERE post_id_comment = $1`)
 
     try{
         const getPosts = await db.any(inputQuery, [postId])
@@ -33,7 +33,7 @@ router.get('/posts/:post_id', async(req, res) => {
 router.post('/posts/:post_id/:poster_id', async(req, res) => {
     const {post_id, poster_id} = req.params
     const {user_id, body} = req.body
-    const inputQuery = (`INSERT INTO comments (user_id, post_id, poster_id, body) VALUES($1, $2, $3, $4) `)
+    const inputQuery = (`INSERT INTO comments (user_id_comment, post_id_comment, poster_id_comment, body_comment) VALUES($1, $2, $3, $4) `)
 
     try {
         await db.none(inputQuery,[user_id, post_id, poster_id, body])
@@ -55,7 +55,7 @@ router.post('/posts/:post_id/:poster_id', async(req, res) => {
 router.patch('/posts/:post_id/:poster_id', async (req, res) => {
     const {post_id, poster_id}= req.params
     const {body} = req.body
-    const inputQuery = (`UPDATE comments SET body= $1 WHERE post_id = $2 AND poster_id = $3`)
+    const inputQuery = (`UPDATE comments SET body_comment= $1 WHERE post_id_comment = $2 AND poster_id_comment = $3`)
     
     try{
         await db.none(inputQuery, [body, post_id, poster_id])
@@ -76,7 +76,7 @@ router.patch('/posts/:post_id/:poster_id', async (req, res) => {
 router.delete('/posts/:post_id/:poster_id', async(req, res) => {
     const postId = req.params.post_id
     const posterId = req.params.poster_id
-    const inputQuery = (`DELETE FROM comments WHERE post_id = $1 AND poster_id = $2`)
+    const inputQuery = (`DELETE FROM comments WHERE post_id_comment = $1 AND poster_id_comment = $2`)
 
     try{
         await db.none(inputQuery, [postId, posterId])
