@@ -68,13 +68,13 @@ const timeFormat = () => {
                 ele.innerText = `${time} mins ago`
             } else if (unit === 'hours') {
                 time = Number(time) + (1 / 24);
-                ele.innerText = `${time} hours ago`
+                ele.innerText = `${Math.floor(time)} hours ago`
             }
         } else if (time >= 60 && time < 1440) {
             ele.innerText = `${Math.floor(time / 60)} hours ago`
         }
         console.log(time);
-    })
+    });
 }
 
 $('#logOut').click( async () => {
@@ -83,3 +83,7 @@ $('#logOut').click( async () => {
         window.location.href = `http://localhost:8000/login`;
     }
 });
+
+$('#profileBtn').click( async => {
+    window.location.href = `http://localhost:8000/profile`;
+})

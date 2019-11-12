@@ -19,8 +19,8 @@
 <body>
     <div class="container">
         <div id="profileBtn" class="btn valign-wrapper">
-            <i class="material-icons">account_box</i>
-            <span class="">Profile Page</span>
+            <i class="material-icons">home</i>
+            <span class="">Home Page</span>
         </div>
         <div id="logOut" class="btn">
                 <i class="material-icons">lock</i>
@@ -29,11 +29,8 @@
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
         
 
-        <% data.posts.forEach(ele => { %>
-        <% if (ele.id === user.id) {
-            
-        } else {        
-        %>
+        <% data.posts.forEach(ele => { %>      
+    
         <div class='card blue' data-postId="<%= ele.id_post %>">
             <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
                 <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
@@ -48,8 +45,8 @@
                 <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
             </span>
         </div>
-        <% }}) %>
+        <% }) %>
     </div>
-    <script src="/homepage/homepage.js"></script>
+    <script src="/profile/profile.js"></script>
 </body>
 </html>
