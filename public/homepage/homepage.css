@@ -42,23 +42,6 @@
     height: 20%;
 }
 
-<<<<<<< HEAD
-.images {
-    height: 100%;
-    width: 100%;
-}
-
-.cardBorder {
-    background-color: forestgreen;
-}
-
-.aComment {
-    width: 50%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-=======
 .card {
     padding: 10px;
->>>>>>> 91a758963771f8eebfaa2fa001901ad720cbe261
 }
