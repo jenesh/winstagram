@@ -28,5 +28,7 @@ const getUser = async () => {
             console.log('Try again');
         }
     }
+    // ELSE SHOW ERROR LOGIN FAILED
+    // SHARRAR READ ME AND DO ME NOW 
 }
 
