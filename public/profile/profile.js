@@ -5,6 +5,10 @@ $('#logOut').click( async () => {
     }
 });
 
-$('#profileBtn').click( async => {
+$('#homepageBtn').click( async => {
     window.location.href = `http://localhost:8000/homepage`;
 });
+
+$('#photoBtn').click( async => {
+    window.location.href = `http://localhost:8000/photo`;
+})
