@@ -16,7 +16,8 @@ CREATE TABLE users (
     username VARCHAR(25) NOT NULL,
     password VARCHAR(25) NOT NULL,
     firstname VARCHAR(50) NOT NULL,
-    lastname VARCHAR(50) NOT NULL
+    lastname VARCHAR(50) NOT NULL,
+    profile_img TEXT NOT NULL
 );
 
 CREATE TABLE posts (
@@ -58,25 +59,30 @@ CREATE TABLE pictures (
 );
 
 -- DUMMY DATA
-INSERT INTO users (username, password, firstname, lastname) VALUES
-    ('red', '123','owen', 'jones'),
-    ('green', '123','sharrar', 'khan'),
-    ('blue', '123','jenesh', 'napit'),
-    ('lol', '123','mr', 'lol'),
-    ('lml', '123','lml', 'funny'),
-    ('yo', '123','y', 'o'),
-    ('yay', '123','mr', 'yay')
+INSERT INTO users (username, password, firstname, lastname, profile_img) VALUES
+    ('red', '123','owen', 'jones', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4e/4e3b9005e98f41f3d5e902141ad17f8f340335b8.jpg'),
+    ('green', '123','sharrar', 'khan', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c9488cd6b71532d4d7c5e489b17c7bed7ecb9166.jpg'),
+    ('blue', '123','jenesh', 'napit', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d7a8811156c40364e88c435748f9a5111c534572.jpg'),
+    ('lol', '123','mr', 'lol', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/03/0392a64c390a09ca7c4849b3af64b7b07370d6db.jpg'),
+    ('lml', '123','lml', 'funny', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/00602f6b99e9f286aa28d4120d25fb3f666e192d.jpg'),
+    ('yo', '123','y', 'o', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7a7c89368dc0fa1def4bd4249413e801b94229e.jpg'),
+    ('yay', '123','mr', 'yay', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/70eab86785a56ef99f1a42e29170a4eea470acef.jpg')
 ;
 
 INSERT INTO posts (user_id_post, body_post, url) VALUES
-    (1, 'Red is my favorite color', ''),
-    (2, 'Green is my favorite color', ''),
-    (3, 'Blue is my favorite color', ''),
-    (1, 'I believe I can fly', 'image1'),
-    (2, 'Is the world flat or round?', ''),
-    (1, 'Queens is the best dont @ me', ''),
-    (3, 'Why is it so cold all of a sudden?', ''),
-    (3, 'Whenever I feel sad I just watch a knicks game to remind myself it could be worse.', 'image2');
+    (1, 'Red is my favorite color', 'https://images.unsplash.com/photo-1513477967668-2aaf11838bd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'),
+    (2, 'You can do anything you put your mind to. :)', ''),
+    (2, 'Green is my favorite color', 'https://images.unsplash.com/photo-1572406667345-eb5e50352ec0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'),
+    (3, 'Blue is my favorite color', 'https://images.unsplash.com/photo-1573433618812-f612e727b7d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+    (3, 'Switching from soda to only water has been one of the best changes.', ''),
+    (1, 'I believe I can fly', 'https://images.unsplash.com/photo-1573456170607-b885fdc78985?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+    (2, 'Is the world flat or round?', 'https://images.unsplash.com/photo-1573502641713-edc392a0ef30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80'),
+    (2, 'I had the worst nightname yesterday but good thing it was only a dream.', ''),
+    (1, 'Queens is the best dont @ me', 'https://images.unsplash.com/photo-1558981023-1d4b7dd8dfb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+    (1, 'Just started meditating and so far I feel more calm throughout the day.', ''),
+    (3, 'Why is it so cold all of a sudden?', 'https://images.unsplash.com/photo-1573567001730-9eb49e901f40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80'),
+    (3, 'Whenever I feel sad I just watch a knicks game to remind myself it could be worse.', 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg')
+;
 
 INSERT INTO likes (user_id_like, post_id_like, poster_id_like) VALUES
     (1, 2, 2),

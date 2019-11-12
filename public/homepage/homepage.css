@@ -40,8 +40,53 @@
     margin-left: 25%;
     width: 50%;
     height: 20%;
+    border-radius: 10%;
+
+}
+
+.border-radius {
+    border-radius: 20px;
 }
 
 .card {
     padding: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #53B8EE;
+}
+
+.images {
+    height: 100%;
+    width: 100%;
+}
+
+.cardImages {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.time {
+    font-size: 80%;
+}
+
+/* .profile-img {
+    margin: 0;
+} */
+
+.edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.like-btn {
+    position: absolute;
+    bottom: 0px;
+    font-size: 3rem;
+}
+
+.like-btn:hover {
+    cursor: pointer;
 }
