@@ -12,7 +12,7 @@ Router.get('/:user_id', async (req, res) => {
     const userId = req.params.user_id;
 
     try {
-        const query = 'SELECT * FROM albums WHERE user_id = $1';
+        const query = 'SELECT * FROM albums WHERE user_id_album = $1';
         const data = await db.any(query, [userId]);
         res.json({
             message: 'Returned all albums',
@@ -27,7 +27,7 @@ Router.get('/:user_id', async (req, res) => {
 Router.post('/:user_id', async (req, res) => {
     const userId = req.params.user_id;
     try {
-        const query = 'INSERT INTO albums (user_id) VALUES ($1)';
+        const query = 'INSERT INTO albums (user_id_album) VALUES ($1)';
         await db.any(query, [userId]);
         res.json({
             message: `Created a new album for user ${userId}`,

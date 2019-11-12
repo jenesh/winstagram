@@ -22,12 +22,27 @@
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
         <button id="logOut">Log Out</button>
 
+    <div class="container">
+        <div id="profileBtn" class="btn valign-wrapper">
+            <i class="material-icons">account_box</i>
+            <span class="">Profile Page</span>
+        </div>
+        <div id="logOut" class="btn">
+                <i class="material-icons">lock</i>
+                <span>Log Out</span>
+        </div>
+        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+
         <% data.posts.forEach(ele => { %>
         <% if (ele.id === user.id) {
             
         } else {        
         %>
+
         <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
+
+        <div class='card blue' data-postId="<%= ele.id_post %>">
+
             <p><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
                 <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
             <p><%= ele.body_post %></p>
