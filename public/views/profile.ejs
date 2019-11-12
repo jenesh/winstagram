@@ -18,15 +18,24 @@
 </head>
 <body>
     <div class="container">
-        <div id="profileBtn" class="btn valign-wrapper">
+
+        <div id="homepageBtn" class="btn valign-wrapper">
             <i class="material-icons">home</i>
             <span class="">Home Page</span>
         </div>
-        <div id="logOut" class="btn">
+
+        <div id="photoBtn" class="btn valign-wrapper">
+                <i class="material-icons">image</i>
+                <span class="">My Photos</span>
+        </div>
+
+        <div id="logOut" class="btn right">
                 <i class="material-icons">lock</i>
                 <span>Log Out</span>
         </div>
-        <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
+
+
+        <h1 class="center-align">Welcome to your profile page <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
         
 
         <% data.posts.forEach(ele => { %>      

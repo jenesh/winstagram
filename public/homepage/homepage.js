@@ -87,3 +87,7 @@ $('#logOut').click( async () => {
 $('#profileBtn').click( async => {
     window.location.href = `http://localhost:8000/profile`;
 })
+
+$('#photoBtn').click( async => {
+    window.location.href = `http://localhost:8000/photo`;
+})
