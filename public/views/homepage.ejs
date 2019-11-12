@@ -30,7 +30,7 @@
                 <span class="">My Photos</span>
         </div>
 
-        <div id="logOut" class="btn right">
+        <div id="logOut" class="btn right waves-effect waves-red">
                 <i class="material-icons">lock</i>
                 <span>Log Out</span>
         </div>
@@ -42,55 +42,103 @@
                 
             } else if(ele.url) { %>
                 <div class='card grey lighten-5 z-depth-1 hoverable' styles="" data-postId="<%= ele.id_post %>">
-                    <div class="valign-wrapper">
-                        <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
-                        <span class="right"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                        <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                    <div class="row">
+                        <div class="profile-img col s2">
+                            <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
+                        </div>
+                        
+                        <div>
+                            <span class="middle"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+    
+                            <div class="edit">
+                                <ul id="dropdown2" class="dropdown-content edit-dropdown">
+                                    <li><a><i class="material-icons right">edit</i></a></li>
+                                    <li><a><i class="material-icons right">delete</i></a></li>
+                                </ul>
+                                <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
+                            </div>
+
+                            <p class="flow-text center-align"><%= ele.body_post %></p>
+                            <img class="cardImages responsive-img" src= <%= ele.url %> />
+                            <span class='time right'>
+                                <%
+                                    const arr = ele.time_post.split(' ')
+                                    const date = arr[0].split('-')
+                                    const oldDate = new Date(ele.time_post)
+                                    const today = new Date()
+                                %>
+                                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                            </span>
+                        </div>
                     </div>
-                    <p class="flow-text center-align"><%= ele.body_post %></p>
-                    <img class="cardImages responsive-img" src= <%= ele.url %> />
-                    <span class='time'>
-                        <%
-                            const arr = ele.time_post.split(' ')
-                            const date = arr[0].split('-')
-                            const oldDate = new Date(ele.time_post)
-                            const today = new Date()
-                        %>
-                        <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-                    </span>
+
+                    <i class="material-icons like-btn red-text">favorite_border</i>
+
                 </div>
             <% } else if (ele.url_photo) {  %>
+
                 <div class='card grey lighten-5 z-depth-1 hoverable' styles="" data-postId="<%= ele.id_post %>">
-                    <div class="valign-wrapper">
-                        <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
-                        <span class="right"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                            <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
-                    </div>
-                    
-                    <p class="flow-text center-align"><%= ele.body_post %></p>
-                    <span class='time'>
-                        <%
-                            const arr = ele.time_post.split(' ')
-                            const date = arr[0].split('-')
-                            const oldDate = new Date(ele.time_post)
-                            const today = new Date()
-                        %>
-                        <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-                    </span>
+                    <div class="row">
+                        <div class="profile-img col s2">
+                            <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
+                        </div>
+                        <div>
+                            <span class="middle"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                            
+                            <div class="edit">
+                                <ul id="dropdown2" class="dropdown-content edit-dropdown">
+                                    <li><a><i class="material-icons right">edit</i></a></li>
+                                    <li><a><i class="material-icons right">delete</i></a></li>
+                                </ul>
+                                <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
+                            </div>
+
+                            <p class="flow-text center-align"><%= ele.body_post %></p>
+
+                            <img class="cardImages responsive-img" src= <%= ele.url_photo %> />
+
+                            <span class='time right'>
+                                <%
+                                    const arr = ele.time_post.split(' ')
+                                    const date = arr[0].split('-')
+                                    const oldDate = new Date(ele.time_post)
+                                    const today = new Date()
+                                %>
+                                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                            </span>
+                        </div>
+                    </div>                
                 </div>
             <% } else if (!ele.url && !ele.url_photo) { %>
                 
                 <div class="card grey lighten-5 z-depth-1 hoverable">
-                    <div class="row valign-wrapper">
+                    <div class="row">
                         <div class="profile-img col s2">
                             <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img">
                         </div>
                         <div class="">
                             <span class="middle"> <%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
+                            <div class="edit">
+                                <ul id="dropdown2" class="dropdown-content edit-dropdown">
+                                    <li><a><i class="material-icons right">edit</i></a></li>
+                                    <li><a><i class="material-icons right">delete</i></a></li>
+                                </ul>
+                                <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
+                            </div>
                             <br>
-                            <span class="black-text left">
+                            <br>
+                            <p class="black-text">
                                 <%= ele.body_post %>
-                            </span>
+                            </p>
+                            <span class='time right'>
+                                <%
+                                    const arr = ele.time_post.split(' ')
+                                    const date = arr[0].split('-')
+                                    const oldDate = new Date(ele.time_post)
+                                    const today = new Date()
+                                %>
+                                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
+                    </span>
                         </div>
                     </div>
                 </div>
