@@ -28,7 +28,6 @@
         </div>
         <h1>Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
         
-
         <% data.posts.forEach(ele => { %>
         <% if (ele.id === user.id) {
             
