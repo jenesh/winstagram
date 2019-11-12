@@ -74,3 +74,19 @@
 /* .profile-img {
     margin: 0;
 } */
+
+.edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.like-btn {
+    position: absolute;
+    bottom: 0px;
+    font-size: 3rem;
+}
+
+.like-btn:hover {
+    cursor: pointer;
+}
