@@ -1,3 +1,7 @@
+body {
+    background-image: url("https://wallpapersmug.com/download/750x1334/1cae56/sunrise_digital_art_4k.jpg");
+}
+
 #profileDiv {
     height: auto;
 }
@@ -53,7 +57,7 @@
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #53B8EE;
+    background-color: white;
 }
 
 .images {
@@ -70,6 +74,24 @@
 .time {
     font-size: 80%;
 }
+
+/* S CSS */
+  .card:hover{
+    transform:scale(1);
+    filter:blur(0px);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+    background-color: mintcream;
+  }
+
+.editIcon {
+    position: absolute;
+    top: 30%;
+    left: 90%;
+    transform: translate(-50%,-50%);
+}
+
+/* J CSS */
 
 /* .profile-img {
     margin: 0;
@@ -90,3 +112,4 @@
 .like-btn:hover {
     cursor: pointer;
 }
+
