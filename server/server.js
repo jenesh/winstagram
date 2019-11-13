@@ -134,7 +134,7 @@ app.get('/homepage', async (req, res) => {
             // comments: comments
         }
 
-        // console.log('All Info: ', data);
+        console.log('All Info: ', data);
         // console.log('Current User Info: ', user);
         // console.log('All Comments for each post: ', comments);
 
