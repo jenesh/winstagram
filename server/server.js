@@ -128,19 +128,6 @@ app.get('/homepage', async (req, res) => {
             }
         }
 
-        for (let i = 0; i < pictures.length; i++) {
-            for (let j = 0; j < posts.length; j++) {
-                if (pictures[i].post_id_picture === posts[j].id_post) {
-                    if (posts[j].allPhotos) {
-                        posts[j].allPhotos.push(pictures[i]);
-                    } else {
-                        posts[j].allPhotos = [];
-                        posts[j].allPhotos.push(pictures[i]);
-                    }
-                }
-            }
-        }
-
         const data = {
             user: user,
             posts: posts,
@@ -242,19 +229,6 @@ app.get('/profile', async (req, res) => {
             }
         }
 
-        for (let i = 0; i < pictures.length; i++) {
-            for (let j = 0; j < posts.length; j++) {
-                if (pictures[i].post_id_picture === posts[j].id_post) {
-                    if (posts[j].allPhotos) {
-                        posts[j].allPhotos.push(pictures[i]);
-                    } else {
-                        posts[j].allPhotos = [];
-                        posts[j].allPhotos.push(pictures[i]);
-                    }
-                }
-            }
-        }
-
         const data = {
             user: user,
             posts: posts,
@@ -304,7 +278,7 @@ app.get('/photo', async (req, res) => {
 
         // GET ALL PHOTOS FOR EACH POST
         try{
-            pictures = await db.any('SELECT * FROM posts LEFT JOIN pictures ON (posts.id_post = pictures.post_id_picture) WHERE posts.id_post = $1', [id]);
+            pictures = await db.any('SELECT * FROM posts WHERE posts.user_id_post = $1', [id]);
         } catch (error){
             // console.log('Comments error => ', error);
         }
