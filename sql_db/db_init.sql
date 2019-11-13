@@ -63,10 +63,11 @@ INSERT INTO users (username, password, firstname, lastname, profile_img) VALUES
     ('red', '123','owen', 'jones', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4e/4e3b9005e98f41f3d5e902141ad17f8f340335b8.jpg'),
     ('green', '123','sharrar', 'khan', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c9488cd6b71532d4d7c5e489b17c7bed7ecb9166.jpg'),
     ('blue', '123','jenesh', 'napit', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d7a8811156c40364e88c435748f9a5111c534572.jpg'),
-    ('lol', '123','mr', 'lol', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/03/0392a64c390a09ca7c4849b3af64b7b07370d6db.jpg'),
-    ('lml', '123','lml', 'funny', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/00602f6b99e9f286aa28d4120d25fb3f666e192d.jpg'),
-    ('yo', '123','y', 'o', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7a7c89368dc0fa1def4bd4249413e801b94229e.jpg'),
-    ('yay', '123','mr', 'yay', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/70eab86785a56ef99f1a42e29170a4eea470acef.jpg')
+    ('bravo', '123','nia', 'carty', 'https://i.pinimg.com/originals/32/09/c0/3209c039c412745c026a4b6e400a9eae.jpg'),
+    ('smith', '123','jim', 'smith', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/03/0392a64c390a09ca7c4849b3af64b7b07370d6db.jpg'),
+    ('allen', '123','mike', 'bunny', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/00602f6b99e9f286aa28d4120d25fb3f666e192d.jpg'),
+    ('miller', '123','britney', 'roh', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7a7c89368dc0fa1def4bd4249413e801b94229e.jpg'),
+    ('brown', '123','jolene', 'malik', 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/70eab86785a56ef99f1a42e29170a4eea470acef.jpg')
 ;
 
 INSERT INTO posts (user_id_post, body_post, url) VALUES
@@ -117,14 +118,21 @@ INSERT INTO comments (user_id_comment, post_id_comment, poster_id_comment, body_
 INSERT INTO albums (user_id_album) VALUES 
     (1),
     (2),
-    (1)
+    (3),
+    (4),
+    (5)
 ;
 
--- INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
---     (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
---     (1, 2, 1, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
---     (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg')
+--  INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
+--    (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
+--    (1, 2, 2, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
+--    (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg'),
+--    (3, 4, 3, 'https://cdn.pixabay.com/photo/2015/06/22/08/37/children-817365_960_720.jpg'),
+--    (3, 3, 3, 'https://image.freepik.com/free-photo/businessman-set-start-running-position-prepare-fight-business-race_42193-123.jpg'),
+--    (4, 5, 4, 'https://cdn.pixabay.com/photo/2016/07/02/01/07/basketball-1492261_960_720.jpg'),
+--    (5, 5, 5, 'https://image.freepik.com/free-photo/life-thailand-buffalo-kids-people-from-field-sunset-silhouette-photo_51530-937.jpg')
 -- ;
+
 
 -- Display both the tables
 \echo ========> USERS <========

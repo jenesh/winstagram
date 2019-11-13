@@ -38,13 +38,16 @@
         <h1 class="center-align">Welcome to your photos
             <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
 
-        <% data.photos.forEach(photo => { %>
+        <div class="carousel">
+           <% data.photos.forEach(photo => { %>
             <% if (photo.url) { %>
-                <img class="responsive-img" src=<%= photo.url %> />
+                <img class="responsive-img carousel-item" src=<%= photo.url %> />
             <% } else { %>
-                <img class="responsive-img" src=<%= photo.url_picture %> />
+                <img class="responsive-img carousel-item" src=<%= photo.url_picture %> />
             <% } %>
         <% }) %>
+          </div>
+           
 
     </div>
     <script src="/photos/photos.js"></script>
