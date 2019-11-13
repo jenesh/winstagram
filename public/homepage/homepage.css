@@ -76,6 +76,10 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* S CSS */
+>>>>>>> b99aa9a644532cd3fccc61c9b6053fd4942d7128
   .card:hover{
     transform:scale(1);
     filter:blur(0px);
@@ -90,7 +94,13 @@ body {
     left: 90%;
     transform: translate(-50%,-50%);
 }
+<<<<<<< HEAD
 =======
+=======
+
+/* J CSS */
+
+>>>>>>> b99aa9a644532cd3fccc61c9b6053fd4942d7128
 /* .profile-img {
     margin: 0;
 } */
@@ -110,4 +120,8 @@ body {
 .like-btn:hover {
     cursor: pointer;
 }
+<<<<<<< HEAD
 >>>>>>> 5d3bc4dd661df6670b74667e79939601eeceb502
+=======
+
+>>>>>>> b99aa9a644532cd3fccc61c9b6053fd4942d7128
