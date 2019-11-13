@@ -1,0 +1,30 @@
+.card {
+    padding: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #53B8EE;
+}
+
+.edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.like-btn {
+    position: absolute;
+    bottom: 5px;
+    font-size: 2.9rem;
+}
+
+.like-btn:hover {
+    cursor: pointer;
+}
+
+
+.like-display {
+    position: absolute;
+    bottom: 12px;
+    left: 60px;
+}
