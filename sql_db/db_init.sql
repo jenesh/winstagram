@@ -49,14 +49,14 @@ CREATE TABLE albums (
     user_id_album INT REFERENCES users (id) ON DELETE CASCADE
 );
 
-CREATE TABLE pictures (
-    id_picture SERIAL PRIMARY KEY,
-    user_id_picture INT REFERENCES users (id) ON DELETE CASCADE,
-    album_id_picture INT REFERENCES albums (id_album) ON DELETE CASCADE,
-    post_id_picture INT REFERENCES posts (id_post) ON DELETE CASCADE,
-    url_picture TEXT,
-    time_picture TEXT DEFAULT NOW()
-);
+-- CREATE TABLE pictures (
+--     id_picture SERIAL PRIMARY KEY,
+--     user_id_picture INT REFERENCES users (id) ON DELETE CASCADE,
+--     album_id_picture INT REFERENCES albums (id_album) ON DELETE CASCADE,
+--     post_id_picture INT REFERENCES posts (id_post) ON DELETE CASCADE,
+--     url_picture TEXT,
+--     time_picture TEXT DEFAULT NOW()
+-- );
 
 -- DUMMY DATA
 INSERT INTO users (username, password, firstname, lastname, profile_img) VALUES
@@ -123,15 +123,16 @@ INSERT INTO albums (user_id_album) VALUES
     (5)
 ;
 
-INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
-    (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
-    (1, 2, 2, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
-    (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg'),
-    (3, 4, 3, 'https://cdn.pixabay.com/photo/2015/06/22/08/37/children-817365_960_720.jpg'),
-    (3, 3, 3, 'https://image.freepik.com/free-photo/businessman-set-start-running-position-prepare-fight-business-race_42193-123.jpg'),
-    (4, 5, 4, 'https://cdn.pixabay.com/photo/2016/07/02/01/07/basketball-1492261_960_720.jpg'),
-    (5, 5, 5, 'https://image.freepik.com/free-photo/life-thailand-buffalo-kids-people-from-field-sunset-silhouette-photo_51530-937.jpg')
-;
+--  INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
+--    (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
+--    (1, 2, 2, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
+--    (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg'),
+--    (3, 4, 3, 'https://cdn.pixabay.com/photo/2015/06/22/08/37/children-817365_960_720.jpg'),
+--    (3, 3, 3, 'https://image.freepik.com/free-photo/businessman-set-start-running-position-prepare-fight-business-race_42193-123.jpg'),
+--    (4, 5, 4, 'https://cdn.pixabay.com/photo/2016/07/02/01/07/basketball-1492261_960_720.jpg'),
+--    (5, 5, 5, 'https://image.freepik.com/free-photo/life-thailand-buffalo-kids-people-from-field-sunset-silhouette-photo_51530-937.jpg')
+-- ;
+
 
 -- Display both the tables
 \echo ========> USERS <========
@@ -144,5 +145,5 @@ SELECT * FROM likes;
 SELECT * FROM comments;
 \echo ========> ALBUMS <========
 SELECT * FROM albums;
-\echo ========> PICTURES <========
-SELECT * FROM pictures;
+-- \echo ========> PICTURES <========
+-- SELECT * FROM pictures;
