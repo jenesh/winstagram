@@ -59,14 +59,14 @@
                         -->
 
                             <ul id="dropdown<%=ele.id_post%>" class="dropdown-content edit-dropdown">
-                                <li class='edit-button' data-postId='<%=ele.id_post%>'>
-                                    <a data-postId='<%=ele.id_post%>'>
-                                        <i class="material-icons right" data-postId='<%=ele.id_post%>'>edit</i>
+                                <li class='edit-button' data-postid='<%=ele.id_post%>' >
+                                    <a data-postid='<%=ele.id_post%>'>
+                                        <i class="material-icons right" data-postid='<%=ele.id_post%>'>edit</i>
                                     </a>
                                 </li>
-                                <li class='delete-button' data-postId='<%=ele.id_post%>'>
-                                    <a data-postId='<%=ele.id_post%>'>
-                                        <i class="material-icons right" data-postId='<%=ele.id_post%>'>delete</i>
+                                <li class='delete-button' data-postid='<%=ele.id_post%>'>
+                                    <a data-postid='<%=ele.id_post%>'>
+                                        <i class="material-icons right" data-postid='<%=ele.id_post%>'>delete</i>
                                     </a>
 
                                 </li>
@@ -81,7 +81,7 @@
                             <%= ele.body_post%>
                         </p>
                         <% if (ele.url) { %>
-                            <img class="cardImages responsive-img" src= <%= ele.url %> />
+                            <img class="cardImages responsive-img materialboxed" data-caption = '<%= ele.body_post %>' src= <%= ele.url %> />
                         <% } %>
                         <span class='time right'>
                             <%

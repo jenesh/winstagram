@@ -88,14 +88,22 @@ $('#photoBtn').click( async () => {
 $('.dropdown-trigger').dropdown();
 
 $('.like-btn').click( async (ele) => {
-    console.dir(ele.target);
-    const postId = ele.target.parentElement.parentElement.dataset.postid;
-    console.log(postId);
+    let spanLikes = ele.target.nextElementSibling;
+    likes = spanLikes.innerText;
+    likes = likes.split(' ');
 
     if (ele.target.innerText === 'favorite') {
         ele.target.innerText = 'favorite_border';
+        let likesNum = Number(likes[0]);
+        likes[0] = likesNum - 1;
+        likes = likes.join(' ');
+        spanLikes.innerText = likes;
     } else {
         ele.target.innerText = 'favorite';
+        let likesNum = Number(likes[0]);
+        likes[0] = likesNum + 1;
+        likes = likes.join(' ');
+        spanLikes.innerText = likes;
     }
 });
 
