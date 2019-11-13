@@ -75,6 +75,7 @@ body {
     font-size: 80%;
 }
 
+/* S CSS */
   .card:hover{
     transform:scale(1);
     filter:blur(0px);
@@ -89,3 +90,26 @@ body {
     left: 90%;
     transform: translate(-50%,-50%);
 }
+
+/* J CSS */
+
+/* .profile-img {
+    margin: 0;
+} */
+
+.edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.like-btn {
+    position: absolute;
+    bottom: 0px;
+    font-size: 3rem;
+}
+
+.like-btn:hover {
+    cursor: pointer;
+}
+

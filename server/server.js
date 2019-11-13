@@ -50,7 +50,7 @@ app.get('/homepage', async (req, res) => {
     // console.log('SESSION', req.session);
     try {
         if (!req.session.hasOwnProperty('valid')) {
-            console.log('TRUE')
+            console.log('Authentication failed')
             res.redirect('/login');
             return;
         }
@@ -69,9 +69,6 @@ app.get('/homepage', async (req, res) => {
         // GET ALL POSTS FOR ALL USERS
         try{
             posts = await db.any('SELECT * FROM posts LEFT JOIN users ON (users.id = posts.user_id_post) WHERE users.id <> $1', [id]);
-            // JOIN comments ON (users.id = comments.user_id)
-            // JOIN likes ON (users.id = likes.user_id)
-
         } catch (error){
             // console.log('AllInfo error => ', error);
         }
@@ -93,7 +90,6 @@ app.get('/homepage', async (req, res) => {
         // GET ALL LIKES FOR EACH POST
         try{
             likes = await db.any('SELECT * FROM posts LEFT JOIN likes ON (posts.id_post = likes.post_id_like) WHERE posts.id_post <> $1', [id]);
-            console.log('Working')
         } catch (error){
             // console.log('Comments error => ', error);
         }
@@ -101,7 +97,6 @@ app.get('/homepage', async (req, res) => {
         // GET ALL PHOTOS FOR EACH POST
         try{
             pictures = await db.any('SELECT * FROM posts LEFT JOIN pictures ON (posts.id_post = pictures.post_id_picture) WHERE posts.id_post <> $1', [id]);
-            console.log('Working')
         } catch (error){
             // console.log('Comments error => ', error);
         }
@@ -154,7 +149,7 @@ app.get('/homepage', async (req, res) => {
 
         // console.log('All Info: ', data);
         // console.log('Current User Info: ', user);
-        console.log('All Comments for each post: ', comments);
+        // console.log('All Comments for each post: ', comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
         // res.json(data);
@@ -188,9 +183,6 @@ app.get('/profile', async (req, res) => {
         // GET ALL POSTS FOR ALL USERS
         try{
             posts = await db.any('SELECT * FROM posts LEFT JOIN users ON (users.id = posts.user_id_post) WHERE users.id = $1', [id]);
-            // JOIN comments ON (users.id = comments.user_id)
-            // JOIN likes ON (users.id = likes.user_id)
-
         } catch (error){
             // console.log('AllInfo error => ', error);
         }
@@ -212,7 +204,6 @@ app.get('/profile', async (req, res) => {
         // GET ALL LIKES FOR EACH POST
         try{
             likes = await db.any('SELECT * FROM posts LEFT JOIN likes ON (posts.id_post = likes.post_id_like) WHERE posts.id_post = $1', [id]);
-            console.log('Working')
         } catch (error){
             // console.log('Comments error => ', error);
         }
@@ -220,7 +211,6 @@ app.get('/profile', async (req, res) => {
         // GET ALL PHOTOS FOR EACH POST
         try{
             pictures = await db.any('SELECT * FROM posts LEFT JOIN pictures ON (posts.id_post = pictures.post_id_picture) WHERE posts.id_post = $1', [id]);
-            console.log('Working')
         } catch (error){
             // console.log('Comments error => ', error);
         }
@@ -273,10 +263,73 @@ app.get('/profile', async (req, res) => {
 
         // console.log('All Info: ', data);
         // console.log('Current User Info: ', user);
-        console.log('All Comments for each post: ', comments);
+        // console.log('All Comments for each post: ', comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/profile.ejs';
         // res.json(data);
+        res.render(viewPath, {data, user});
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Pictures
+app.get('/photo', async (req, res) => {
+    // req.session.cookie.expires = false;
+    // console.log('SESSION', req.session);
+    try {
+        if (!req.session.hasOwnProperty('valid')) {
+            console.log('TRUE')
+            res.redirect('/login');
+            return;
+        }
+    } catch (err) {
+        console.log(err)
+    }
+    
+    let username = req.session.valid.username;
+    let id = req.session.valid.id;
+    id = Number(id);
+
+    if (req.session.valid.loggedIn) {
+        // // GET ALL USER INFORMATION
+        let user, pictures= [];
+
+        // GET CURRENT USER INFO
+        try{
+            user = await db.one('SELECT * FROM users WHERE id = $1', [id]);
+        } catch (error){
+            // console.log('Users error => ', error);
+        }
+
+        // GET ALL PHOTOS FOR EACH POST
+        try{
+            pictures = await db.any('SELECT * FROM posts LEFT JOIN pictures ON (posts.id_post = pictures.post_id_picture) WHERE posts.id_post = $1', [id]);
+        } catch (error){
+            // console.log('Comments error => ', error);
+        }
+
+        // for (let i = 0; i < pictures.length; i++) {
+        //     for (let j = 0; j < posts.length; j++) {
+        //         if (pictures[i].post_id_picture === posts[j].id_post) {
+        //             if (posts[j].allPhotos) {
+        //                 posts[j].allPhotos.push(pictures[i]);
+        //             } else {
+        //                 posts[j].allPhotos = [];
+        //                 posts[j].allPhotos.push(pictures[i]);
+        //             }
+        //         }
+        //     }
+        // }
+
+        const data = {
+            user: user,
+            photos: pictures
+        }
+
+        const viewPath = path.dirname(__dirname) + '/public/views/picture.ejs';
+        // res.json(data);
+        console.log(data);
         res.render(viewPath, {data, user});
     } else {
         res.redirect('/login');

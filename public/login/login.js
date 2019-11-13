@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const getUser = async () => {
     const usernameInput = document.querySelector("#usernameInput").value;
     const passwordInput = document.querySelector("#passwordInput").value;
+    
 
     if (usernameInput != null && passwordInput != null) {
         const data = await axios.get(`http://localhost:8000/users/login/inputs/${usernameInput}/${passwordInput}`);
@@ -25,10 +26,11 @@ const getUser = async () => {
             await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
             window.location = `/homepage`;
         } else {
-            console.log('Try again');
+            document.querySelector('#passwordInput').value = ''
+            document.querySelector('#usernameInput').value = ''
+            document.querySelector('#passwordInput').placeholder = 'Password may be incorrect. Try again'  
+            document.querySelector('#usernameInput').placeholder = 'Username may be incorrect. Try again'  
         }
     }
-    // ELSE SHOW ERROR LOGIN FAILED
-    // SHARRAR READ ME AND DO ME NOW 
 }
 
