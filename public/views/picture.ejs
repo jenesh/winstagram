@@ -42,8 +42,6 @@
            <% data.photos.forEach(photo => { %>
             <% if (photo.url) { %>
                 <img class="responsive-img carousel-item" src=<%= photo.url %> />
-            <% } else { %>
-                <img class="responsive-img carousel-item" src=<%= photo.url_picture %> />
             <% } %>
         <% }) %>
           </div>
