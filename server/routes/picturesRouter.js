@@ -30,13 +30,13 @@ Router.get('/albums/:album_id', async (req, res) => {
 
 Router.post('/albums/:album_id', async (req, res) => {
     const album_id = req.params.album_id;
-    const url = req.body.url;
+    const {user_id, post_id, url} = req.body;
     const query = `
-        INSERT INTO pictures (album_id_picture, url) 
-        VALUES ($1, $2)`
+        INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) 
+        VALUES ($1, $2, $3, $4)`
         ;
     try {
-        await db.none(query, [album_id, url]);
+        await db.none(query, [user_id, album_id, post_id, url]);
         res.json({
             message: `Added photo to album: ${album_id}`,
             success: true

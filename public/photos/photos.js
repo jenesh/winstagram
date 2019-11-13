@@ -1,11 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM content loaded')
+// document.addEventListener('DOMContentLoaded', () => {
+//     console.log('DOM content loaded')
+// })
+
+// const fetchPhotoAlbums = async (userId) => {
+//     const photoAlbum = await axios.get(`http://localhost:8000/albums/${userId}`)
+//     const photos = photoAlbum.data.message
+//     console.log(photos)
+// }
+
+// fetchPhotoAlbums(1)
+
+$('#profileBtn').click( async => {
+    window.location.href = `http://localhost:8000/profile`;
 })
 
-const fetchPhotoAlbums = async (userId) => {
-    const photoAlbum = await axios.get(`http://localhost:8000/albums/${userId}`)
-    const photos = photoAlbum.data.message
-    console.log(photos)
-}
+$('#homepageBtn').click( async => {
+    window.location.href = `http://localhost:8000/homepage`;
+});
 
-fetchPhotoAlbums(1)
+$('#logOut').click( async () => {
+    const data = await axios.get(`http://localhost:8000/logout`);
+    if (data.data.status) {
+        window.location.href = `http://localhost:8000/login`;
+    }
+});
+
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });

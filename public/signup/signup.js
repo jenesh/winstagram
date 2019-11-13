@@ -38,7 +38,9 @@ const accountCreationHandler = async (username, password, firstname, lastname) =
         window.alert('Account created. Please login')
         window.location.href = 'http://localhost:8000/login'
     } else {
-        window.alert('Username already taken. Please choose another')
+        // window.alert('Username already taken. Please choose another')
+        document.querySelector('#username').value = ''
+        document.querySelector('#username').placeholder = 'Username already taken'
     }  
     
 }
