@@ -283,19 +283,6 @@ app.get('/photo', async (req, res) => {
             // console.log('Comments error => ', error);
         }
 
-        // for (let i = 0; i < pictures.length; i++) {
-        //     for (let j = 0; j < posts.length; j++) {
-        //         if (pictures[i].post_id_picture === posts[j].id_post) {
-        //             if (posts[j].allPhotos) {
-        //                 posts[j].allPhotos.push(pictures[i]);
-        //             } else {
-        //                 posts[j].allPhotos = [];
-        //                 posts[j].allPhotos.push(pictures[i]);
-        //             }
-        //         }
-        //     }
-        // }
-
         const data = {
             user: user,
             photos: pictures
