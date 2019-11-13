@@ -58,7 +58,6 @@ $('.like-btn').click( async (ele) => {
     }
 });
 
-
 // $('.edits').click( async (ele) => {
 //     console.dir(ele.target);
 //     const postId = ele.target.parentElement.dataset.id;
@@ -75,18 +74,42 @@ $('.edit-button').click(async (ele) => {
     const el = await ele.target.dataset.postid;
     console.log(el);
     
-    // const patchPost = await axios.patch(`${ele.dataset.postId}`,
-    // {
-
-    // })
+    const ele = await event.target
+    const postId = ele.dataset.postid
+    console.log(postId) 
+    
+    const patchPost = await axios.patch(`http://localhost:8000/posts/${postId}`,
+    {
+        
+    })
 })
 
-$('.delete-button').click(async (ele) => {
+$('.delete-button').click(async (event) => {
+    // const ele = event.target
     // const postText = document.querySelector('.black')
-    const el = await ele.target.dataset.postid;
-    console.log(el);
-    // const deletePost = await axios.delete(`${ele.dataset.postId}`)
+   
+    const ele = await event.target
+    const postId = ele.dataset.postid
+    const deletePost = await axios.delete(`http://localhost:8000/posts/${postId}`)
+
+    console.log(postId)
+    console.log(deletePost.data.message)
+
+    removePost(postId)
+
 })
+
+const removePost = (idPost) =>{
+    let postHolder = document.querySelector('#holder')
+    let elem = document.getElementById(idPost)
+    console.log(elem)
+
+    postHolder.removeChild(elem)
+}
+
+const editPost = () => {
+    let 
+}
 
 $('.dropdown-trigger').dropdown();
 
