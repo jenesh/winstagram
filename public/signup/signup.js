@@ -27,15 +27,16 @@ const checkForValidInputs = () => {
     }
 }
 
-const accountCreationHandler = async (username, password, firstname, lastname) => {
+const accountCreationHandler = async (username, password, firstname, lastname, profile_img) => {
     const routeInfo = await axios.get(`http://localhost:8000/users/username/${username}`)
     const user = routeInfo.data.payload
-    
+    profile_img = !null
+
     if (user === undefined && checkForValidInputs() === true){
         console.log('all good homie')
-        const postInputValues = await axios.post(`http://localhost:8000/users`,{username, password, firstname, lastname})
+        const postInputValues = await axios.post(`http://localhost:8000/users`,{username, password, firstname, lastname, profile_img})
         console.log(postInputValues)
-        window.alert('Account created. Please login')
+        // window.alert('Account created. Please login')
         window.location.href = 'http://localhost:8000/login'
     } else {
         // window.alert('Username already taken. Please choose another')

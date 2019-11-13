@@ -41,9 +41,11 @@
         <div class="carousel carousel-slider">
             <% data.photos.forEach(photo => { %>
             <% if (photo.url) { %>
+            
                 <div class="img-div">
                     <img class="responsive-img carousel-item" src=<%= photo.url %>  />
                 </div>
+                
             <% }}) %>
         </div>
 

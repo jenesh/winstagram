@@ -48,20 +48,37 @@
                     <div class="">
                         <span class="middle"> <%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
                         <div class="edit">
+
+                        <!--
                             <ul id="dropdown2" class="dropdown-content edit-dropdown">
                                 <li class="edit-post" id='<%= ele.id_post %>' >
                                     <a><i class="material-icons right">edit</i></a>
                                 </li>
                                 <li class="delete-post" id='<%= ele.id_post%>' >
                                     <a><i class="material-icons right">delete</i></a>
+                        -->
+
+                            <ul id="dropdown<%=ele.id_post%>" class="dropdown-content edit-dropdown">
+                                <li class='edit-button' data-postId='<%=ele.id_post%>'>
+                                    <a data-postId='<%=ele.id_post%>'>
+                                        <i class="material-icons right" data-postId='<%=ele.id_post%>'>edit</i>
+                                    </a>
+                                </li>
+                                <li class='delete-button' data-postId='<%=ele.id_post%>'>
+                                    <a data-postId='<%=ele.id_post%>'>
+                                        <i class="material-icons right" data-postId='<%=ele.id_post%>'>delete</i>
+                                    </a>
+
                                 </li>
                             </ul>
-                            <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
+                            <a class="floating-btn dropdown-trigger" data-target="dropdown<%=ele.id_post%>">
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
                         </div>
                         <br>
                         <br>
-                        <p class="black-text">
-                            <%= ele.body_post %>
+                        <p class="black-text" id='<%= ele.id_post%>'>
+                            <%= ele.body_post%>
                         </p>
                         <% if (ele.url) { %>
                             <img class="cardImages responsive-img" src= <%= ele.url %> />
