@@ -125,7 +125,7 @@ INSERT INTO albums (user_id_album) VALUES
 
 INSERT INTO pictures (user_id_picture, album_id_picture, post_id_picture, url_picture) VALUES
     (1, 1, 1, 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'),
-    (1, 2, 1, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
+    (1, 2, 2, 'https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg'),
     (2, 3, 2, 'https://www.petmd.com/sites/default/files/introduce-dog-to-cat.jpg'),
     (3, 4, 3, 'https://cdn.pixabay.com/photo/2015/06/22/08/37/children-817365_960_720.jpg'),
     (3, 3, 3, 'https://image.freepik.com/free-photo/businessman-set-start-running-position-prepare-fight-business-race_42193-123.jpg'),

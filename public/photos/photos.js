@@ -9,6 +9,7 @@
 // }
 
 // fetchPhotoAlbums(1)
+
 $('#profileBtn').click( async => {
     window.location.href = `http://localhost:8000/profile`;
 })
@@ -24,3 +25,7 @@ $('#logOut').click( async () => {
     }
 });
 
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
