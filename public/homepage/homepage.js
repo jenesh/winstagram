@@ -87,12 +87,26 @@ $('#photoBtn').click( async () => {
 
 $('.dropdown-trigger').dropdown();
 
+// $('.like-btn').click( async (ele) => {
+//     console.dir(ele.target);
+//     const postId = ele.target.parentElement.parentElement.dataset.postid;
+//     console.log("postId:", postId);
+
+//     if (ele.target.innerText === 'favorite') { //red
+//         ele.target.innerText = 'favorite_border'; //white
+//     } else {
+//         ele.target.innerText = 'favorite'; //red
+//     }
+// });
+
 $('.like-btn').click( async (ele) => {
     let spanLikes = ele.target.nextElementSibling;
     likes = spanLikes.innerText;
     likes = likes.split(' ');
 
-    if (ele.target.innerText === 'favorite') {
+    if (ele.target.innerText === 'favorite') { //red
+        const deleteLike = await axios.delete(`http://localhost:8000/likes/like/${postId}`);
+        console.log("deleteLike:", deleteLike);
         ele.target.innerText = 'favorite_border';
         let likesNum = Number(likes[0]);
         likes[0] = likesNum - 1;
