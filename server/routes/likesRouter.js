@@ -54,12 +54,10 @@ router.get("/posts/:id", async (req, res) => {
     }
 });
 
-
 router.post("/posts/:id", async (req, res) => {
     console.log("POST method for likes has been called. Adding a single like");
     console.log("req.body:", req.body);
     const userId = req.session.valid.id;
-    
     const postId = req.params.id;
     let insertQuery = `
     INSERT INTO likes (user_id_like, post_id_like, poster_id_like)
@@ -85,7 +83,6 @@ router.post("/posts/:id", async (req, res) => {
         });
     }
 });
-
 
 router.delete("/like/:postId", async (req, res) => {
     console.log("DELETE method for likes starting.");
