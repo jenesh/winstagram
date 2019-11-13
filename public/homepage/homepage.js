@@ -103,6 +103,11 @@ $('.like-btn').click( async (ele) => {
     let spanLikes = ele.target.nextElementSibling;
     likes = spanLikes.innerText;
     likes = likes.split(' ');
+    const postId = ele.target.id;
+    const posterId = ele.target.dataset.userid;
+    console.log("postId:", postId);
+    console.log("posterId:", posterId);
+
 
     if (ele.target.innerText === 'favorite') { //red
         const deleteLike = await axios.delete(`http://localhost:8000/likes/like/${postId}`);
@@ -113,6 +118,8 @@ $('.like-btn').click( async (ele) => {
         likes = likes.join(' ');
         spanLikes.innerText = likes;
     } else {
+        const likePost = await axios.post(`http://localhost:8000/likes/posts/${postId}`, {poster_id: posterId});
+       console.log("likePosts:", likePost);
         ele.target.innerText = 'favorite';
         let likesNum = Number(likes[0]);
         likes[0] = likesNum + 1;
