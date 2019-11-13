@@ -73,11 +73,11 @@ router.get('/id/:id', async(req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const {username, password, firstname, lastname} = req.body
-    const inputQuery = (`INSERT INTO users(username, password, firstname, lastname) VALUES($1, $2, $3, $4)`) 
+    const {username, password, firstname, lastname, profile_img} = req.body
+    const inputQuery = (`INSERT INTO users(username, password, firstname, lastname, profile_img) VALUES($1, $2, $3, $4, $5)`) 
     
     try{
-        await db.none(inputQuery,[username, password, firstname, lastname])
+        await db.none(inputQuery,[username, password, firstname, lastname, profile_img])
         res.json({
             message: "Success user added to database",
             payload: req.body,

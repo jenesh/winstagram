@@ -43,7 +43,7 @@
             <% if (ele.id === user.id) {
                 
             } else if(ele.url) { %>
-                <div class='card grey lighten-5 z-depth-1 hoverable border-radius' styles="" data-postId="<%= ele.id_post %>">
+                <div class='card grey lighten-5 z-depth-1 hoverable border-radius' styles="" data-postId=<%= ele.id_post %>>
                     <div class="row">
                         <div class="profile-img col s2">
                             <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img" style="height:50%">
@@ -54,8 +54,8 @@
     
                             <div class="edit">
                                 <ul id="dropdown2" class="dropdown-content edit-dropdown">
-                                    <li><a><i class="material-icons right">edit</i></a></li>
-                                    <li><a><i class="material-icons right">delete</i></a></li>
+                                    <li class= 'edit-button'><a><i class="material-icons right">edit</i></a></li>
+                                    <li class= 'delete-button'><a><i class="material-icons right">delete</i></a></li>
                                 </ul>
                                 <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
                             </div>
