@@ -28,23 +28,40 @@ $('.like-btn').click( async (ele) => {
 });
 
 $('.edit-button').click(async (event) => {
-    // console.dir(ele.target)
-    const ele = event.target
-    console.log(ele)
-    console.log(ele.dataset) 
     
-    // const patchPost = await axios.patch(`${ele.dataset.postId}`,
-    // {
-
-    // })
+    const ele = await event.target
+    const postId = ele.dataset.postid
+    console.log(postId) 
+    
+    const patchPost = await axios.patch(`http://localhost:8000/posts/${postId}`,
+    {
+        
+    })
 })
 
 $('.delete-button').click(async (event) => {
-    const ele = event.target
+    // const ele = event.target
     // const postText = document.querySelector('.black')
-    console.log(ele)
-    console.log(ele.dataset)
+   
+    const ele = await event.target
+    const postId = ele.dataset.postid
+    const deletePost = await axios.delete(`http://localhost:8000/posts/${postId}`)
 
-    // const deletePost = await axios.delete(`${ele.dataset.postId}`)
+    console.log(postId)
+    console.log(deletePost.data.message)
+
+    removePost(postId)
 
 })
+
+const removePost = (idPost) =>{
+    let postHolder = document.querySelector('#holder')
+    let elem = document.getElementById(idPost)
+    console.log(elem)
+
+    postHolder.removeChild(elem)
+}
+
+const editPost = () => {
+    let 
+}
