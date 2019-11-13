@@ -21,54 +21,12 @@
 <body class="">
 
     <div class="container">
-        
-        <!-- <div id="profileBtn" class="btn valign-wrapper">
+    
+        <div id="profileBtn" class="btn valign-wrapper">
             <i class="material-icons">account_box</i>
             <span class="">Profile Page</span>
         </div>
         
-        <div id="logOut" class="btn">
-                <i class="material-icons">lock</i>
-                <span>Log Out</span>
-        </div>
-
-        <% data.posts.forEach(ele => { %>
-        <% if (ele.id === user.id) {
-            
-        } else if(ele.url) { %>
-                <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
-                        <p class="center-align" styles="font-weight: bolder"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                            <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
-                        <p><%= ele.body_post %></p>
-                        <img class="cardImages" src= <%= ele.url %>
-                        <span class='time'>
-                            <%
-                                const arr = ele.time_post.split(' ')
-                                const date = arr[0].split('-')
-                                const oldDate = new Date(ele.time_post)
-                                const today = new Date()
-                            %>
-                            <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-                        </span>
-                    </div>
-        <%} else {        %>
-        <div class='card border-radius' styles="" data-postId="<%= ele.id_post %>">
-            <p class="center-align"><%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> 
-                <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></p>
-                <i class="editIcon material-icons">edit</i>
-            <p><%= ele.body_post %></p>
-            <span class='time'>
-                <%
-                    const arr = ele.time_post.split(' ')
-                    const date = arr[0].split('-')
-                    const oldDate = new Date(ele.time_post)
-                    const today = new Date()
-                %>
-                <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
-            </span>
-        </div>
-        <% }}) %>
-
         <div id="photoBtn" class="btn valign-wrapper">
                 <i class="material-icons">image</i>
                 <span class="">My Photos</span>
@@ -77,7 +35,7 @@
         <div id="logOut" class="btn right waves-effect waves-red">
                 <i class="material-icons">lock</i>
                 <span>Log Out</span>
-        </div> -->
+        </div>
 
         <h1 class="center-align indigo-text darken-3">Welcome to your feed <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
 
