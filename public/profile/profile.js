@@ -35,17 +35,26 @@ $('#photoBtn').click( async => {
     window.location.href = `http://localhost:8000/photo`;
 });
 
-$('.dropdown-trigger').dropdown();
 
 $('.like-btn').click( async (ele) => {
-    console.dir(ele.target);
-    const postId = ele.target.parentElement.parentElement.dataset.postid;
-    console.log(postId);
+    let spanLikes = ele.target.nextElementSibling;
+    likes = spanLikes.innerText;
+    likes = likes.split(' ');
 
     if (ele.target.innerText === 'favorite') {
         ele.target.innerText = 'favorite_border';
+        let likesNum = Number(likes[0]);
+        likes[0] = likesNum - 1;
+        likes = likes.join(' ');
+
+        spanLikes.innerText = likes;
     } else {
         ele.target.innerText = 'favorite';
+        let likesNum = Number(likes[0]);
+        likes[0] = likesNum + 1;
+        likes = likes.join(' ');
+
+        spanLikes.innerText = likes;
     }
 });
 
@@ -62,11 +71,9 @@ $('.like-btn').click( async (ele) => {
 //     // }
 // });
 
-$('.edit-button').click(async (event) => {
-    // console.dir(ele.target)
-    const ele = event.target
-    console.log(ele)
-    console.log(ele.dataset) 
+$('.edit-button').click(async (ele) => {
+    const el = await ele.target.dataset.postid;
+    console.log(el);
     
     // const patchPost = await axios.patch(`${ele.dataset.postId}`,
     // {
@@ -74,12 +81,15 @@ $('.edit-button').click(async (event) => {
     // })
 })
 
-$('.delete-button').click(async (event) => {
-    const ele = event.target
+$('.delete-button').click(async (ele) => {
     // const postText = document.querySelector('.black')
-    console.log(ele)
-    console.log(ele.dataset)
-
+    const el = await ele.target.dataset.postid;
+    console.log(el);
     // const deletePost = await axios.delete(`${ele.dataset.postId}`)
-
 })
+
+$('.dropdown-trigger').dropdown();
+
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+});
