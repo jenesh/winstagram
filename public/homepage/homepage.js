@@ -94,14 +94,40 @@ $('#photoBtn').click( async () => {
 
 $('.dropdown-trigger').dropdown();
 
-$('.like-btn').click( async (ele) => {
-    console.dir(ele.target);
-    const postId = ele.target.parentElement.parentElement.dataset.postid;
-    console.log(postId);
+// $('.like-btn').click( async (ele) => {
+//     console.dir(ele.target);
+//     const postId = ele.target.parentElement.parentElement.dataset.postid;
+//     console.log("postId:", postId);
 
-    if (ele.target.innerText === 'favorite') {
+//     if (ele.target.innerText === 'favorite') { //red
+//         ele.target.innerText = 'favorite_border'; //white
+//     } else {
+//         ele.target.innerText = 'favorite'; //red
+//     }
+// });
+
+$('.like-btn').click( async (ele) => {
+    const postId = ele.target.id;
+    const posterId = ele.target.dataset.userid;
+    console.log("postId:", postId);
+    console.log("userId:", posterId);
+    // console.dir(userId);
+
+    if (ele.target.innerText === 'favorite') { //red
+        const deleteLike = await axios.delete(`http://localhost:8000/likes/like/${postId}`);
+        console.log("deleteLike:", deleteLike);
         ele.target.innerText = 'favorite_border';
-    } else {
+    
+    } else { // white
+        const likePost = await axios.post(`http://localhost:8000/likes/posts/${postId}`, {poster_id: posterId});
+        console.log("likePosts:", likePost);
         ele.target.innerText = 'favorite';
     }
-});
+})
+
+
+// Add user's like to the database
+// Undo like when clicked
+
+// Two ways to unlike: query user id and post id OR putting atribute on the i tag
+

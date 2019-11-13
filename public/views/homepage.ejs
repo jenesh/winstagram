@@ -116,7 +116,9 @@
                         </div>
                     </div>
 
-                    <i class="material-icons like-btn red-text">favorite_border</i>
+                    <i  id='<%=ele.id_post %>' 
+                        data-userId='<%=ele.user_id_post%>' 
+                        class="material-icons like-btn red-text">favorite_border</i>
 
                 </div>
             <% } else if (ele.url_photo) {  %>
@@ -151,7 +153,10 @@
                                 <%= Math.floor((today - oldDate) / (1000 * 3600) * 60) %> mins ago
                             </span>
                         </div>
-                    </div>                
+                    </div>     
+                    <i  id='<%=ele.id_post %>' 
+                            data-userId='<%=ele.user_id_post%>' 
+                            class="material-icons like-btn red-text">favorite_border</i>           
                 </div>
             <% } else if (!ele.url && !ele.url_photo) { %>
                 
@@ -185,6 +190,9 @@
                             </span>
                         </div>
                     </div>
+                    <i  id='<%=ele.id_post %>' 
+                            data-userId='<%=ele.user_id_post%>' 
+                            class="material-icons like-btn red-text">favorite_border</i>
                 </div>
 
             <% } %>
