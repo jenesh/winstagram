@@ -12,7 +12,7 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Home</title>
-    <link rel="stylesheet" href="/homepage/homepage.css">
+    <link rel="stylesheet" href="/profile/profile.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
 </head>
@@ -40,7 +40,7 @@
 
         <% data.posts.forEach(ele => { %>      
     
-        <div class="card grey lighten-5 z-depth-1 hoverable">
+        <div class="card grey lighten-5 z-depth-1 hoverable posts" data-postId="<%= ele.id_post %>" id=<%= ele.id_post%>>
                 <div class="row">
                     <div class="profile-img col s2">
                         <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img">
@@ -49,8 +49,12 @@
                         <span class="middle"> <%= ele.firstname[0].toUpperCase() + ele.firstname.slice(1) %> <%= ele.lastname[0].toUpperCase() + ele.lastname.slice(1) %></span>
                         <div class="edit">
                             <ul id="dropdown2" class="dropdown-content edit-dropdown">
-                                <li><a><i class="material-icons right">edit</i></a></li>
-                                <li><a><i class="material-icons right">delete</i></a></li>
+                                <li class="edit-post" id='<%= ele.id_post %>' >
+                                    <a><i class="material-icons right">edit</i></a>
+                                </li>
+                                <li class="delete-post" id='<%= ele.id_post%>' >
+                                    <a><i class="material-icons right">delete</i></a>
+                                </li>
                             </ul>
                             <a class="floating-btn dropdown-trigger" data-target="dropdown2"><i class="material-icons right">arrow_drop_down</i></a>
                         </div>
@@ -59,6 +63,9 @@
                         <p class="black-text">
                             <%= ele.body_post %>
                         </p>
+                        <% if (ele.url) { %>
+                            <img class="cardImages responsive-img" src= <%= ele.url %> />
+                        <% } %>
                         <span class='time right'>
                             <%
                                 const arr = ele.time_post.split(' ')
@@ -70,6 +77,17 @@
                         </span>
                     </div>
                 </div>
+
+                <i class="material-icons like-btn red-text">favorite_border</i>
+                    <span class="like-display"> 
+                        <% if(ele.allLikes) {%> 
+                            <%= ele.allLikes.length %>
+                        <% } else { %>
+                            <%= 0 %>
+                        <% } %>
+                        Likes 
+                </span>
+
             </div>
 
         <% }) %>
