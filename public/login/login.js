@@ -26,14 +26,11 @@ const getUser = async () => {
             await axios.get(`http://localhost:8000/validation?username=${username}&id=${id}`);
             window.location = `/homepage`;
         } else {
-            console.log('try again')
-            
+            document.querySelector('#passwordInput').value = ''
+            document.querySelector('#usernameInput').value = ''
+            document.querySelector('#passwordInput').placeholder = 'Password may be incorrect. Try again'  
+            document.querySelector('#usernameInput').placeholder = 'Username may be incorrect. Try again'  
         }
     }
-    // ELSE SHOW ERROR LOGIN FAILED
-    // SHARRAR READ ME AND DO ME NOW 
 }
 
-const checkForValidInputs = () => {
-    
-}
