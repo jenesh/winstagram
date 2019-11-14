@@ -54,18 +54,17 @@ router.get("/posts/:id", async (req, res) => {
     }
 });
 
-
 router.post("/posts/:id", async (req, res) => {
     console.log("POST method for likes has been called. Adding a single like");
     console.log("req.body:", req.body);
-    
-    const postId = parseInt(req.params.id);
+    const userId = req.session.valid.id;
+    const postId = req.params.id;
     let insertQuery = `
     INSERT INTO likes (user_id_like, post_id_like, poster_id_like)
     VALUES ($1, $2, $3)
     `;
     try {
-        const user_id = parseInt(req.body.user_id);
+        const user_id = userId;
         const poster_id = parseInt(req.body.poster_id);
 
         await db.any(insertQuery, [user_id, postId, poster_id]);
@@ -85,18 +84,19 @@ router.post("/posts/:id", async (req, res) => {
     }
 });
 
-
-router.delete("/:id", async (req, res) => {
+router.delete("/like/:postId", async (req, res) => {
     console.log("DELETE method for likes starting.");
-    const id = req.params.id;
+    const postId = req.params.postId;
+    const userId = req.session.valid.id;
     const inputQuery = `
     DELETE FROM likes
     WHERE user_id_like = $1
+    AND post_id_like = $2
     `;
     try {
-        await db.none(inputQuery, [id]);
+        await db.none(inputQuery, [userId, postId]);
         res.json({
-            message: `Success. deleted post with id: ${id}`,
+            message: `Success. Deleted like with postId: ${postId} and userId: ${userId}`,
             success: true
         });
     } catch (error) {

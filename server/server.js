@@ -63,7 +63,7 @@ app.get('/homepage', async (req, res) => {
     id = Number(id);
 
     if (req.session.valid.loggedIn) {
-        // // GET ALL USER INFORMATION
+        // GET ALL USER INFORMATION
         let user, likes, pictures, posts, comments = [];
 
         // GET ALL POSTS FOR ALL USERS
@@ -139,7 +139,8 @@ app.get('/homepage', async (req, res) => {
         // console.log('All Comments for each post: ', comments);
 
         const viewPath = path.dirname(__dirname) + '/public/views/homepage.ejs';
-        // res.json(data);
+
+        //res.json(data);
         res.render(viewPath, {data, user});
     } else {
         res.redirect('/login');
@@ -266,7 +267,7 @@ app.get('/photo', async (req, res) => {
     id = Number(id);
 
     if (req.session.valid.loggedIn) {
-        // // GET ALL USER INFORMATION
+        // GET ALL USER INFORMATION
         let user, pictures= [];
 
         // GET CURRENT USER INFO
@@ -289,7 +290,7 @@ app.get('/photo', async (req, res) => {
         }
 
         const viewPath = path.dirname(__dirname) + '/public/views/picture.ejs';
-        // res.json(data);
+        res.json(data);
         console.log(data);
         res.render(viewPath, {data, user});
     } else {

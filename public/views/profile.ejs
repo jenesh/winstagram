@@ -37,10 +37,11 @@
 
         <h1 class="center-align">Welcome to your profile page <%= user.firstname[0].toUpperCase() + user.firstname.slice(1) %>!</h1>
         
-
+        <div id='holder'>
         <% data.posts.forEach(ele => { %>      
     
         <div class="card grey lighten-5 z-depth-1 hoverable posts" data-postId="<%= ele.id_post %>" id=<%= ele.id_post%>>
+        
                 <div class="row">
                     <div class="profile-img col s2">
                         <img src="<%= ele.profile_img %>" alt="" class="circle responsive-img">
@@ -108,7 +109,9 @@
             </div>
 
         <% }) %>
+        </div>
     </div>
+    
     <script src="/profile/profile.js"></script>
 </body>
 </html>
