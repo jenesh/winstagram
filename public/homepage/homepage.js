@@ -100,6 +100,7 @@ $('.dropdown-trigger').dropdown();
 // });
 
 $('.like-btn').click( async (ele) => {
+    console.dir(ele.target);
     let spanLikes = ele.target.nextElementSibling;
     likes = spanLikes.innerText;
     likes = likes.split(' ');
@@ -119,7 +120,7 @@ $('.like-btn').click( async (ele) => {
         spanLikes.innerText = likes;
     } else {
         const likePost = await axios.post(`http://localhost:8000/likes/posts/${postId}`, {poster_id: posterId});
-       console.log("likePosts:", likePost);
+        console.log("likePosts:", likePost);
         ele.target.innerText = 'favorite';
         let likesNum = Number(likes[0]);
         likes[0] = likesNum + 1;

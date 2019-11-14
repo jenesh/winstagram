@@ -290,7 +290,7 @@ app.get('/photo', async (req, res) => {
         }
 
         const viewPath = path.dirname(__dirname) + '/public/views/picture.ejs';
-        res.json(data);
+        // res.json(data);
         console.log(data);
         res.render(viewPath, {data, user});
     } else {
