@@ -88,6 +88,7 @@ $('#photoBtn').click( async () => {
 $('.dropdown-trigger').dropdown();
 
 $('.like-btn').click( async (ele) => {
+    console.dir(ele.target);
     let spanLikes = ele.target.nextElementSibling;
     likes = spanLikes.innerText;
     likes = likes.split(' ');
