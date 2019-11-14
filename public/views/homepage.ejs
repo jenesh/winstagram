@@ -80,7 +80,9 @@
                         </div>
                     </div>
 
-                    <i class="material-icons like-btn red-text">favorite_border</i>
+                    <i class="material-icons like-btn red-text"
+                    id=<%= ele.id_post %> data-userid=<%= user.id %>
+                    >favorite_border</i>
                     <span class="like-display"> 
                         <% if(ele.allLikes) {%> 
                             <%= ele.allLikes.length %>
@@ -94,7 +96,7 @@
 
             <% } else { %>
                 
-                <div class="card grey lighten-5 z-depth-1 hoverable" data-postId=<%= ele.id_post %> id=<%= ele.id_post%> >
+                <div class="card grey lighten-5 z-depth-1 hoverable" data-postId=<%= ele.id_post %> id=<%= ele.id_post %> >
 
                     <div class="row">
                         <div class="profile-img col s2">
@@ -130,7 +132,7 @@
                         </div>
                     </div>
 
-                    <i class="material-icons like-btn red-text" id=<%= ele.id_post %>>favorite_border</i>
+                    <i class="material-icons like-btn red-text" id=<%= ele.id_post %> data-userid=<%= user.id %> >favorite_border</i>
                     <span class="like-display"> 
                         <% if(ele.allLikes) {%> 
                             <%= ele.allLikes.length %>
