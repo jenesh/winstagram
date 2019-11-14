@@ -45,6 +45,10 @@ app.get('/validation', (req, res) => {
     }
 });
 
+const timeElapsed = (start, end) => {
+    return end - start;
+}
+
 app.get('/homepage', async (req, res) => {
     // req.session.cookie.expires = false;
     // console.log('SESSION', req.session);
@@ -61,6 +65,8 @@ app.get('/homepage', async (req, res) => {
     let username = req.session.valid.username;
     let id = req.session.valid.id;
     id = Number(id);
+
+    const start = new Date(); // START TIME
 
     if (req.session.valid.loggedIn) {
         // GET ALL USER INFORMATION
@@ -134,7 +140,11 @@ app.get('/homepage', async (req, res) => {
             // comments: comments
         }
 
-        console.log('All Info: ', data);
+        const end = new Date();
+
+        console.log(timeElapsed(start, end));
+
+        // console.log('All Info: ', data);
         // console.log('Current User Info: ', user);
         // console.log('All Comments for each post: ', comments);
 
