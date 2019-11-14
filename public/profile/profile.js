@@ -70,18 +70,20 @@ $('.like-btn').click( async (ele) => {
 //     // }
 // });
 
+// $.()
 $('.edit-button').click(async (ele) => {
+     let postHolder = document.querySelector('#holder')
     const el = await ele.target.dataset.postid;
     console.log(el);
     
-    const ele = await event.target
-    const postId = ele.dataset.postid
-    console.log(postId) 
-    
-    const patchPost = await axios.patch(`http://localhost:8000/posts/${postId}`,
-    {
-        
-    })
+    const elem = el.toString()
+    console.log(elem)
+
+    document.getElementById(`${elem}`).contentEditable = true 
+    // const patchPost = await axios.patch(`http://localhost:8000/posts/${el}`,
+    // {
+    //    'body':  
+    // })
 })
 
 $('.delete-button').click(async (event) => {
@@ -107,12 +109,13 @@ const removePost = (idPost) =>{
     postHolder.removeChild(elem)
 }
 
-const editPost = () => {
-    let 
-}
+// const editPost = () => {
+//     let 
+// }
 
 $('.dropdown-trigger').dropdown();
 
 $(document).ready(function(){
     $('.materialboxed').materialbox();
 });
+
